@@ -53,60 +53,65 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
       zIndex: 10000,
       perspective: '1000px',
     }}>
-      {/* 3D Dock Container - the "shelf" */}
+      {/* 3D Dock Container - the "shelf" viewed from above */}
       <div style={{
         position: 'relative',
         transformStyle: 'preserve-3d',
-        transform: isMobile ? 'none' : 'perspective(1000px) rotateX(-15deg)',
-        transformOrigin: 'center bottom',
+        perspective: '800px',
       }}>
-        {/* The dock surface */}
+        {/* The dock surface - tilted like a shelf you're looking down at */}
         <div style={{
           position: 'relative',
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'center',
-          gap: isMobile ? 8 : 20,
-          padding: isMobile ? '8px 16px 12px' : '20px 40px 24px',
-          background: 'linear-gradient(180deg, rgba(60,60,70,0.95) 0%, rgba(35,35,45,0.98) 100%)',
+          gap: isMobile ? 8 : 12,
+          padding: isMobile ? '8px 16px 12px' : '16px 28px 20px',
+          background: isMobile 
+            ? 'rgba(40,40,50,0.95)'
+            : 'linear-gradient(to bottom, rgba(180,180,190,0.25) 0%, rgba(120,120,130,0.3) 50%, rgba(60,60,70,0.9) 100%)',
           backdropFilter: 'blur(20px)',
-          borderRadius: isMobile ? '24px 24px 0 0' : 20,
-          border: '1px solid rgba(255,255,255,0.12)',
-          borderBottom: isMobile ? 'none' : '3px solid rgba(20,20,25,0.9)',
+          borderRadius: isMobile ? '20px 20px 0 0' : '8px 8px 12px 12px',
+          border: isMobile ? 'none' : '1px solid rgba(255,255,255,0.3)',
+          borderTop: isMobile ? 'none' : '1px solid rgba(255,255,255,0.5)',
+          borderBottom: isMobile ? 'none' : '4px solid rgba(40,40,50,0.95)',
+          transform: isMobile ? 'none' : 'rotateX(45deg)',
+          transformOrigin: 'center bottom',
           transformStyle: 'preserve-3d',
           boxShadow: isMobile ? '0 -10px 40px rgba(0,0,0,0.3)' : `
-            0 25px 50px -15px rgba(0,0,0,0.6),
-            inset 0 1px 0 rgba(255,255,255,0.1),
-            inset 0 -1px 0 rgba(0,0,0,0.2)
+            0 20px 40px -10px rgba(0,0,0,0.5),
+            inset 0 2px 4px rgba(255,255,255,0.2)
           `,
         }}>
-          {/* Top surface shine */}
+          {/* Glass reflection on top surface */}
           {!isMobile && (
             <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              height: '40%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%)',
-              borderRadius: '20px 20px 0 0',
+              height: '100%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 30%, transparent 60%)',
+              borderRadius: '8px 8px 0 0',
               pointerEvents: 'none',
             }} />
           )}
           
-          {/* Front face of the dock (the thickness you see) */}
+          {/* Front face of the dock shelf (the edge you see) */}
           {!isMobile && (
             <div style={{
               position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: 16,
-              background: 'linear-gradient(180deg, rgba(45,45,55,1) 0%, rgba(25,25,35,1) 100%)',
-              borderRadius: '0 0 20px 20px',
-              transform: 'translateZ(-8px) translateY(16px) rotateX(90deg)',
+              left: -1,
+              right: -1,
+              bottom: -4,
+              height: 20,
+              background: 'linear-gradient(180deg, rgba(80,80,90,1) 0%, rgba(50,50,60,1) 30%, rgba(30,30,40,1) 100%)',
+              borderRadius: '0 0 12px 12px',
+              transform: 'rotateX(-90deg)',
               transformOrigin: 'top center',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.4)',
+              boxShadow: '0 8px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderTop: 'none',
             }} />
           )}
         {stacks.map((stack, stackIndex) => (
@@ -120,20 +125,22 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             onMouseLeave={() => !isMobile && setExpandedStack(null)}
             onClick={() => isMobile && setExpandedStack(expandedStack === stack.id ? null : stack.id)}
           >
-            {/* Expanded Stack Items */}
+            {/* Expanded Stack Items - fan out upward */}
             <div style={{
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: 'translateX(-50%)',
               display: 'flex',
               flexDirection: 'column-reverse',
               alignItems: 'center',
-              gap: 8,
-              paddingBottom: 12,
+              gap: 10,
+              paddingBottom: 16,
               opacity: expandedStack === stack.id ? 1 : 0,
               pointerEvents: expandedStack === stack.id ? 'auto' : 'none',
               transition: 'opacity 0.2s ease',
+              // Counter-rotate to appear upright in the 3D space
+              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-45deg)',
+              transformOrigin: 'center bottom',
             }}>
               {stack.items.map((itemId, itemIndex) => {
                 const win = getWindowById(itemId);
@@ -210,174 +217,182 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               })}
             </div>
 
-            {/* Main Stack Icon - 3D cube-like button */}
+            {/* Main Stack Icon - standing upright on the tilted shelf */}
             <button
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: 6,
-                padding: isMobile ? '10px 14px' : '16px 22px',
-                background: expandedStack === stack.id
-                  ? 'linear-gradient(180deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.08) 100%)'
-                  : hasActiveWindow(stack)
-                    ? 'linear-gradient(180deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.04) 100%)'
-                    : 'linear-gradient(180deg, rgba(70,70,80,0.9) 0%, rgba(50,50,60,0.9) 100%)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderBottom: '3px solid rgba(30,30,40,0.9)',
-                borderRadius: 16,
+                gap: 4,
+                padding: isMobile ? '8px 12px' : '8px 14px 6px',
+                background: 'transparent',
+                border: 'none',
+                borderRadius: 12,
                 cursor: 'pointer',
                 transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                transform: expandedStack === stack.id 
-                  ? 'translateY(-12px) translateZ(30px) scale(1.15)' 
-                  : 'translateY(0) translateZ(10px) scale(1)',
+                // Counter-rotate to stand upright, plus lift on hover
+                transform: isMobile 
+                  ? 'none'
+                  : expandedStack === stack.id 
+                    ? 'rotateX(-45deg) translateY(-20px) scale(1.2)' 
+                    : 'rotateX(-45deg) translateY(0) scale(1)',
                 transformStyle: 'preserve-3d',
+                transformOrigin: 'center bottom',
                 position: 'relative',
-                boxShadow: expandedStack === stack.id
-                  ? '0 15px 35px -5px rgba(0,0,0,0.5), 0 5px 15px rgba(212,175,55,0.2), inset 0 1px 0 rgba(255,255,255,0.15)'
-                  : '0 8px 20px -5px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
               }}
             >
-              {/* 3D bottom face of the icon button */}
+              {/* Icon reflection on the dock surface */}
               {!isMobile && (
                 <div style={{
                   position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: -3,
-                  height: 8,
-                  background: 'linear-gradient(180deg, rgba(40,40,50,1) 0%, rgba(25,25,35,1) 100%)',
-                  borderRadius: '0 0 14px 14px',
-                  transform: 'rotateX(90deg)',
-                  transformOrigin: 'top center',
+                  bottom: -8,
+                  left: '50%',
+                  transform: 'translateX(-50%) rotateX(90deg) scaleY(0.5)',
+                  transformOrigin: 'center top',
+                  width: 50,
+                  height: 30,
+                  background: `radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.25) 0%, transparent 70%)`,
+                  filter: 'blur(3px)',
+                  opacity: expandedStack === stack.id ? 0.8 : 0.5,
+                  transition: 'opacity 0.3s ease',
+                  pointerEvents: 'none',
                 }} />
               )}
               
-              {/* Stacked cards behind icon (3D effect) */}
-              {!isMobile && stack.items.length > 1 && (
-                <>
-                  <div style={{
-                    position: 'absolute',
-                    top: 6,
-                    left: '50%',
-                    transform: 'translateX(-50%) translateZ(-12px) rotateX(5deg) scale(0.88)',
-                    width: 44,
-                    height: 44,
-                    borderRadius: 12,
-                    background: 'linear-gradient(180deg, rgba(55,55,65,0.9) 0%, rgba(40,40,50,0.9) 100%)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                  }} />
-                  {stack.items.length > 2 && (
+              {/* The actual icon - large and prominent */}
+              <div style={{
+                position: 'relative',
+                width: isMobile ? 48 : 56,
+                height: isMobile ? 48 : 56,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: expandedStack === stack.id
+                  ? 'linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)'
+                  : hasActiveWindow(stack)
+                    ? 'linear-gradient(180deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%)'
+                    : 'linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%)',
+                borderRadius: 14,
+                boxShadow: expandedStack === stack.id
+                  ? '0 8px 24px -4px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.3), inset 0 1px 0 rgba(255,255,255,0.3)'
+                  : '0 4px 12px -2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                transition: 'all 0.3s ease',
+              }}>
+                {/* Stacked cards behind icon */}
+                {!isMobile && stack.items.length > 1 && (
+                  <>
                     <div style={{
                       position: 'absolute',
-                      top: 10,
-                      left: '50%',
-                      transform: 'translateX(-50%) translateZ(-24px) rotateX(8deg) scale(0.76)',
-                      width: 44,
-                      height: 44,
+                      top: 3,
+                      left: 3,
+                      right: 3,
+                      bottom: 3,
                       borderRadius: 12,
-                      background: 'linear-gradient(180deg, rgba(45,45,55,0.8) 0%, rgba(30,30,40,0.8) 100%)',
-                      border: '1px solid rgba(255,255,255,0.04)',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                      background: 'rgba(60,60,70,0.6)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      transform: 'translate(-4px, -4px)',
+                      zIndex: -1,
                     }} />
-                  )}
-                </>
-              )}
+                    {stack.items.length > 2 && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 3,
+                        left: 3,
+                        right: 3,
+                        bottom: 3,
+                        borderRadius: 12,
+                        background: 'rgba(50,50,60,0.4)',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        transform: 'translate(-8px, -8px)',
+                        zIndex: -2,
+                      }} />
+                    )}
+                  </>
+                )}
+                
+                <span style={{
+                  fontSize: isMobile ? 28 : 32,
+                  filter: expandedStack === stack.id 
+                    ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))'
+                    : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                  transition: 'all 0.3s ease',
+                }}>
+                  {stack.icon}
+                </span>
+                
+                {/* Item count badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: -6,
+                  right: -6,
+                  width: 20,
+                  height: 20,
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #e5c048 0%, #d4af37 100%)',
+                  color: '#0a0a0f',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
+                  border: '2px solid rgba(255,255,255,0.3)',
+                }}>
+                  {stack.items.length}
+                </div>
+              </div>
               
+              {/* Label */}
               <span style={{
-                fontSize: isMobile ? 28 : 36,
-                filter: expandedStack === stack.id 
-                  ? 'drop-shadow(0 6px 16px rgba(212,175,55,0.6))'
-                  : 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                zIndex: 2,
-                transform: 'translateZ(5px)',
-              }}>
-                {stack.icon}
-              </span>
-              
-              <span style={{
-                fontSize: isMobile ? 9 : 11,
+                fontSize: isMobile ? 9 : 10,
                 fontWeight: 600,
-                color: expandedStack === stack.id ? '#d4af37' : hasActiveWindow(stack) ? '#d4af37' : '#a0a0a8',
+                color: expandedStack === stack.id ? '#d4af37' : hasActiveWindow(stack) ? '#d4af37' : '#b0b0b8',
                 textTransform: 'uppercase',
-                letterSpacing: 1,
+                letterSpacing: 0.5,
+                marginTop: 2,
+                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                 transition: 'color 0.3s ease',
-                transform: 'translateZ(5px)',
               }}>
                 {stack.label}
               </span>
 
-              {/* Active indicator */}
+              {/* Active indicator dot */}
               {hasActiveWindow(stack) && (
                 <div style={{
                   position: 'absolute',
-                  bottom: 6,
+                  bottom: -2,
                   left: '50%',
-                  transform: 'translateX(-50%) translateZ(5px)',
-                  width: 6,
-                  height: 6,
+                  transform: 'translateX(-50%)',
+                  width: 5,
+                  height: 5,
                   borderRadius: '50%',
                   background: '#d4af37',
-                  boxShadow: '0 0 12px rgba(212,175,55,0.9)',
+                  boxShadow: '0 0 8px rgba(212,175,55,0.9)',
                 }} />
               )}
-
-              {/* Item count badge */}
-              <div style={{
-                position: 'absolute',
-                top: isMobile ? 4 : 8,
-                right: isMobile ? 4 : 10,
-                width: 18,
-                height: 18,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #e5c048 0%, #d4af37 100%)',
-                color: '#0a0a0f',
-                fontSize: 10,
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 3px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3)',
-                transform: 'translateZ(8px)',
-                border: '1px solid rgba(255,255,255,0.2)',
-              }}>
-                {stack.items.length}
-              </div>
             </button>
           </div>
         ))}
         </div>
       </div>
 
-      {/* Ground plane / surface the dock sits on */}
+      {/* Reflection of the dock on the "surface" below */}
       {!isMobile && (
         <div style={{
           position: 'absolute',
-          bottom: -30,
+          top: '100%',
           left: '50%',
-          transform: 'translateX(-50%) perspective(500px) rotateX(80deg)',
-          width: '120%',
-          height: 60,
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)',
+          transform: 'translateX(-50%) scaleY(-1)',
+          width: '100%',
+          height: 40,
+          background: 'linear-gradient(to bottom, rgba(100,100,110,0.15) 0%, transparent 100%)',
+          borderRadius: '0 0 8px 8px',
+          filter: 'blur(4px)',
+          opacity: 0.6,
           pointerEvents: 'none',
-        }} />
-      )}
-      
-      {/* Ground shadow */}
-      {!isMobile && (
-        <div style={{
-          position: 'absolute',
-          bottom: -20,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '90%',
-          height: 30,
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 0%, transparent 70%)',
-          filter: 'blur(12px)',
-          pointerEvents: 'none',
+          maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
         }} />
       )}
 
