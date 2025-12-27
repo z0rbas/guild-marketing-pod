@@ -55,25 +55,101 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
     }}>
       {/* 3D Dock Container */}
       <div style={{
+        position: 'relative',
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'center',
         gap: isMobile ? 8 : 16,
-        padding: isMobile ? '8px 16px 12px' : '12px 24px 16px',
-        background: 'linear-gradient(180deg, rgba(30,30,35,0.9) 0%, rgba(20,20,25,0.95) 100%)',
+        padding: isMobile ? '8px 16px 12px' : '16px 32px 20px',
+        background: 'linear-gradient(180deg, rgba(50,50,60,0.95) 0%, rgba(25,25,30,0.98) 100%)',
         backdropFilter: 'blur(20px)',
-        borderRadius: isMobile ? '20px 20px 0 0' : 20,
-        border: '1px solid rgba(255,255,255,0.1)',
-        borderBottom: isMobile ? 'none' : '1px solid rgba(255,255,255,0.1)',
-        boxShadow: `
-          0 -10px 40px rgba(0,0,0,0.3),
-          0 0 0 1px rgba(255,255,255,0.05) inset,
-          0 20px 40px -10px rgba(0,0,0,0.5)
-        `,
-        transform: 'rotateX(5deg)',
+        borderRadius: isMobile ? '24px 24px 0 0' : 24,
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderBottom: isMobile ? 'none' : '1px solid rgba(80,80,90,0.5)',
+        transform: isMobile ? 'none' : 'perspective(800px) rotateX(12deg)',
         transformOrigin: 'bottom center',
         transformStyle: 'preserve-3d',
+        boxShadow: isMobile ? '0 -10px 40px rgba(0,0,0,0.3)' : `
+          0 30px 60px -20px rgba(0,0,0,0.7),
+          0 0 0 1px rgba(255,255,255,0.08) inset,
+          0 -2px 10px rgba(255,255,255,0.05) inset,
+          0 15px 30px -5px rgba(0,0,0,0.4)
+        `,
       }}>
+        {/* 3D Depth - Top surface highlight */}
+        {!isMobile && (
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '50%',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%)',
+            borderRadius: '24px 24px 0 0',
+            pointerEvents: 'none',
+          }} />
+        )}
+        
+        {/* 3D Depth - Bottom edge (thickness) */}
+        {!isMobile && (
+          <div style={{
+            position: 'absolute',
+            bottom: -8,
+            left: 8,
+            right: 8,
+            height: 12,
+            background: 'linear-gradient(180deg, rgba(15,15,20,0.95) 0%, rgba(10,10,15,0.9) 100%)',
+            borderRadius: '0 0 20px 20px',
+            transform: 'perspective(800px) rotateX(-60deg)',
+            transformOrigin: 'top center',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(0,0,0,0.3)',
+            borderTop: 'none',
+          }} />
+        )}
+        
+        {/* 3D Depth - Left edge */}
+        {!isMobile && (
+          <div style={{
+            position: 'absolute',
+            top: 8,
+            bottom: 0,
+            left: -6,
+            width: 10,
+            background: 'linear-gradient(90deg, rgba(20,20,25,0.9) 0%, rgba(35,35,45,0.95) 100%)',
+            borderRadius: '12px 0 0 12px',
+            transform: 'perspective(400px) rotateY(45deg)',
+            transformOrigin: 'right center',
+            boxShadow: '-5px 0 15px rgba(0,0,0,0.3)',
+          }} />
+        )}
+        
+        {/* 3D Depth - Right edge */}
+        {!isMobile && (
+          <div style={{
+            position: 'absolute',
+            top: 8,
+            bottom: 0,
+            right: -6,
+            width: 10,
+            background: 'linear-gradient(270deg, rgba(20,20,25,0.9) 0%, rgba(35,35,45,0.95) 100%)',
+            borderRadius: '0 12px 12px 0',
+            transform: 'perspective(400px) rotateY(-45deg)',
+            transformOrigin: 'left center',
+            boxShadow: '5px 0 15px rgba(0,0,0,0.3)',
+          }} />
+        )}
+        
+        {/* Inner glow */}
+        {!isMobile && (
+          <div style={{
+            position: 'absolute',
+            inset: 1,
+            borderRadius: 23,
+            background: 'radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 50%)',
+            pointerEvents: 'none',
+          }} />
+        )}
         {stacks.map((stack, stackIndex) => (
           <div
             key={stack.id}
@@ -295,18 +371,31 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
       {!isMobile && (
         <div style={{
           position: 'absolute',
-          top: '100%',
+          top: 'calc(100% + 8px)',
           left: '50%',
-          transform: 'translateX(-50%) rotateX(180deg) scaleY(0.3)',
-          width: '100%',
-          height: 60,
-          background: 'linear-gradient(180deg, rgba(30,30,35,0.3) 0%, transparent 100%)',
-          borderRadius: 20,
-          opacity: 0.4,
-          filter: 'blur(4px)',
+          transform: 'translateX(-50%) perspective(800px) rotateX(60deg) scaleY(0.4)',
+          width: '90%',
+          height: 40,
+          background: 'linear-gradient(180deg, rgba(40,40,50,0.4) 0%, transparent 100%)',
+          borderRadius: 16,
+          opacity: 0.5,
+          filter: 'blur(6px)',
           pointerEvents: 'none',
-          maskImage: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, transparent 100%)',
+        }} />
+      )}
+      
+      {/* Ground shadow */}
+      {!isMobile && (
+        <div style={{
+          position: 'absolute',
+          top: 'calc(100% + 12px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '80%',
+          height: 20,
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 70%)',
+          filter: 'blur(10px)',
+          pointerEvents: 'none',
         }} />
       )}
 
