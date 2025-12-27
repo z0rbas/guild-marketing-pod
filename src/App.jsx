@@ -123,17 +123,54 @@ export default function App() {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 8,
+          gap: 12,
         }}>
-          <span style={{ color: '#d4af37', fontSize: 14 }}>⚔️</span>
-          <span style={{
-            color: '#d4af37',
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: 2,
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
           }}>
-            GUILD OF HONOUR
-          </span>
+            <span style={{ color: '#d4af37', fontSize: 14 }}>⚔️</span>
+            <span style={{
+              color: '#d4af37',
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: 2,
+            }}>
+              GUILD OF HONOUR
+            </span>
+          </div>
+          <button
+            onClick={() => toggleWindow('apply')}
+            style={{
+              background: openWindows.includes('apply') 
+                ? 'rgba(212,175,55,0.2)' 
+                : 'linear-gradient(135deg, #d4af37 0%, #b8962e 100%)',
+              border: '1px solid #d4af37',
+              color: openWindows.includes('apply') ? '#d4af37' : '#0a0a0f',
+              fontSize: 11,
+              fontWeight: 600,
+              cursor: 'pointer',
+              padding: '5px 12px',
+              borderRadius: 6,
+              transition: 'all 0.2s',
+              letterSpacing: 0.5,
+            }}
+            onMouseEnter={(e) => {
+              if (!openWindows.includes('apply')) {
+                e.target.style.background = 'linear-gradient(135deg, #e5c048 0%, #d4af37 100%)';
+                e.target.style.transform = 'scale(1.02)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!openWindows.includes('apply')) {
+                e.target.style.background = 'linear-gradient(135deg, #d4af37 0%, #b8962e 100%)';
+                e.target.style.transform = 'scale(1)';
+              }
+            }}
+          >
+            🎯 Apply Now
+          </button>
         </div>
         
         <button
@@ -247,7 +284,7 @@ export default function App() {
         overflowX: isMobile ? 'auto' : 'visible',
         WebkitOverflowScrolling: 'touch',
       }}>
-        {windows.map((win) => (
+        {windows.filter(win => win.id !== 'apply').map((win) => (
           <DockIcon
             key={win.id}
             icon={win.icon}
