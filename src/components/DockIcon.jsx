@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const DockIcon = ({ icon, label, isActive, onClick }) => {
+const DockIcon = ({ icon, label, isActive, onClick, scale = 1, isNeighborHovered = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
   
@@ -9,12 +9,31 @@ const DockIcon = ({ icon, label, isActive, onClick }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Calculate the actual scale based on hover state and neighbor effect
+  const getScale = () => {
+    if (isMobile) return 1;
+    if (scale !== 1) return scale; // Use provided scale from parent
+    if (isHovered) return 1.4;
+    return 1;
+  };
+
+  const getTranslateY = () => {
+    if (isMobile) return 0;
+    if (scale !== 1) return -((scale - 1) * 20); // Lift based on scale
+    if (isHovered) return -16;
+    return 0;
+  };
+
+  const actualScale = getScale();
+  const translateY = getTranslateY();
   
   return (
     <button
       onClick={onClick}
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      data-hovered={isHovered}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -25,18 +44,20 @@ const DockIcon = ({ icon, label, isActive, onClick }) => {
         border: 'none',
         borderRadius: isMobile ? 8 : 12,
         cursor: 'pointer',
-        transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        transition: 'all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)',
         position: 'relative',
-        transform: isHovered && !isActive && !isMobile ? 'translateY(-8px) scale(1.1)' : 'translateY(0) scale(1)',
+        transform: `translateY(${translateY}px) scale(${actualScale})`,
+        transformOrigin: 'bottom center',
         minWidth: isMobile ? 50 : 'auto',
-        minHeight: 44, // Touch-friendly minimum
+        minHeight: 44,
         WebkitTapHighlightColor: 'transparent',
+        zIndex: isHovered ? 10 : 1,
       }}
     >
       <span style={{ 
         fontSize: isMobile ? 24 : 28,
-        filter: isHovered ? 'drop-shadow(0 4px 8px rgba(212,175,55,0.4))' : 'none',
-        transition: 'filter 0.3s ease',
+        filter: isHovered || scale > 1.1 ? 'drop-shadow(0 4px 12px rgba(212,175,55,0.5))' : 'none',
+        transition: 'filter 0.15s ease',
       }}>{icon}</span>
       <span style={{
         fontSize: isMobile ? 9 : 10,
@@ -44,7 +65,7 @@ const DockIcon = ({ icon, label, isActive, onClick }) => {
         letterSpacing: 0.5,
         textTransform: 'uppercase',
         fontWeight: 600,
-        transition: 'color 0.3s ease',
+        transition: 'color 0.15s ease',
         maxWidth: isMobile ? 45 : 'none',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -64,20 +85,22 @@ const DockIcon = ({ icon, label, isActive, onClick }) => {
           animation: 'pulse 2s ease-in-out infinite',
         }} />
       )}
-      {isHovered && !isActive && !isMobile && (
+      {isHovered && !isMobile && (
         <div style={{
           position: 'absolute',
-          top: -30,
+          top: -28,
           left: '50%',
           transform: 'translateX(-50%)',
-          padding: '4px 8px',
-          background: 'rgba(212,175,55,0.9)',
-          color: '#0a0a0f',
-          fontSize: 10,
+          padding: '6px 12px',
+          background: 'rgba(20,20,25,0.95)',
+          color: '#d4af37',
+          fontSize: 11,
           fontWeight: 600,
-          borderRadius: 4,
+          borderRadius: 6,
           whiteSpace: 'nowrap',
-          animation: 'tooltipFade 0.2s ease',
+          animation: 'tooltipFade 0.15s ease',
+          border: '1px solid rgba(212,175,55,0.3)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
         }}>
           {label}
         </div>

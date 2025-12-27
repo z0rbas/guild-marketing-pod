@@ -15,6 +15,7 @@ import MeetTheGuild from './components/windows/MeetTheGuild';
 import WhatIsAPod from './components/windows/WhatIsAPod';
 import FAQ from './components/windows/FAQ';
 import ApplyNow from './components/windows/ApplyNow';
+import AISkills from './components/windows/AISkills';
 
 export default function App() {
   const [stage, setStage] = useState('boot'); // boot -> letter -> os
@@ -22,6 +23,7 @@ export default function App() {
   const [windowOrder, setWindowOrder] = useState(['apply']);
   const [time, setTime] = useState(new Date());
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+  const [hoveredDockIndex, setHoveredDockIndex] = useState(-1);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -66,6 +68,7 @@ export default function App() {
     { id: 'whatisapod', title: 'What is a POD?', icon: '🛡️', component: <WhatIsAPod />, position: { x: 60, y: 40 }, width: 520, height: 680 },
     { id: 'comparison', title: 'University vs Pod', icon: '🎓', component: <UniversityComparison />, position: { x: 40, y: 50 }, width: 520, height: 720 },
     { id: 'path', title: 'The Path', icon: '🗺️', component: <ThePath />, position: { x: 100, y: 70 }, width: 480, height: 620 },
+    { id: 'aiskills', title: 'AI Stack', icon: '🤖', component: <AISkills />, position: { x: 140, y: 50 }, width: 500, height: 700 },
     { id: 'curriculum', title: 'Curriculum', icon: '🧠', component: <Curriculum />, position: { x: 160, y: 50 }, width: 540, height: 680 },
     { id: 'earnings', title: 'Earnings Simulator', icon: '💰', component: <EarningsSimulator />, position: { x: 220, y: 80 }, width: 460, height: 640 },
     { id: 'proof', title: 'Proof of Work', icon: '📡', component: <ProofOfWork />, position: { x: 280, y: 60 }, width: 480, height: 580 },
@@ -74,6 +77,16 @@ export default function App() {
     { id: 'faq', title: 'FAQ', icon: '❓', component: <FAQ />, position: { x: 120, y: 40 }, width: 520, height: 640 },
     { id: 'apply', title: 'Your Application', icon: '🎯', component: <ApplyNow />, position: { x: 180, y: 60 }, width: 440, height: 700 },
   ];
+
+  // Calculate dock icon scales for magnification effect
+  const getDockScale = (index) => {
+    if (isMobile || hoveredDockIndex === -1) return 1;
+    const distance = Math.abs(index - hoveredDockIndex);
+    if (distance === 0) return 1.4;
+    if (distance === 1) return 1.25;
+    if (distance === 2) return 1.1;
+    return 1;
+  };
 
   // Boot stage
   if (stage === 'boot') {
@@ -258,40 +271,50 @@ export default function App() {
       </div>
 
       {/* Dock */}
-      <div style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: 'rgba(20,20,25,0.95)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: isMobile ? 0 : 16,
-        borderTop: '1px solid #2a2a35',
-        border: isMobile ? 'none' : '1px solid #2a2a35',
-        borderBottom: isMobile ? 'none' : '1px solid #2a2a35',
-        padding: isMobile ? '4px 8px 8px' : '8px 12px',
-        display: 'flex',
-        justifyContent: 'center',
-        gap: isMobile ? 2 : 4,
-        zIndex: 10000,
-        ...(isMobile ? {} : {
-          left: '50%',
-          right: 'auto',
-          transform: 'translateX(-50%)',
-          bottom: 12,
-          width: 'auto',
-        }),
-        overflowX: isMobile ? 'auto' : 'visible',
-        WebkitOverflowScrolling: 'touch',
-      }}>
-        {windows.filter(win => win.id !== 'apply').map((win) => (
-          <DockIcon
+      <div 
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: 'rgba(20,20,25,0.95)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: isMobile ? 0 : 16,
+          borderTop: '1px solid #2a2a35',
+          border: isMobile ? 'none' : '1px solid #2a2a35',
+          borderBottom: isMobile ? 'none' : '1px solid #2a2a35',
+          padding: isMobile ? '4px 8px 8px' : '8px 12px 12px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          gap: isMobile ? 2 : 0,
+          zIndex: 10000,
+          ...(isMobile ? {} : {
+            left: '50%',
+            right: 'auto',
+            transform: 'translateX(-50%)',
+            bottom: 12,
+            width: 'auto',
+          }),
+          overflowX: isMobile ? 'auto' : 'visible',
+          WebkitOverflowScrolling: 'touch',
+          minHeight: isMobile ? 'auto' : 80,
+        }}
+        onMouseLeave={() => setHoveredDockIndex(-1)}
+      >
+        {windows.filter(win => win.id !== 'apply').map((win, index) => (
+          <div 
             key={win.id}
-            icon={win.icon}
-            label={win.title.split(' ')[0]}
-            isActive={openWindows.includes(win.id)}
-            onClick={() => toggleWindow(win.id)}
-          />
+            onMouseEnter={() => !isMobile && setHoveredDockIndex(index)}
+          >
+            <DockIcon
+              icon={win.icon}
+              label={win.title.split(' ')[0]}
+              isActive={openWindows.includes(win.id)}
+              onClick={() => toggleWindow(win.id)}
+              scale={getDockScale(index)}
+            />
+          </div>
         ))}
       </div>
 
