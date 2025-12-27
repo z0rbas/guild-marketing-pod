@@ -72,7 +72,7 @@ export default function App() {
     { id: 'code', title: 'The Code', icon: '📜', component: <TheCode />, position: { x: 340, y: 70 }, width: 460, height: 620 },
     { id: 'team', title: 'Meet The Guild', icon: '👥', component: <MeetTheGuild />, position: { x: 400, y: 50 }, width: 450, height: 600 },
     { id: 'faq', title: 'FAQ', icon: '❓', component: <FAQ />, position: { x: 120, y: 40 }, width: 520, height: 640 },
-    { id: 'apply', title: 'Apply Now', icon: '🎯', component: <ApplyNow />, position: { x: 180, y: 60 }, width: 440, height: 640 },
+    { id: 'apply', title: 'Your Application', icon: '🎯', component: <ApplyNow />, position: { x: 180, y: 60 }, width: 440, height: 700 },
   ];
 
   // Boot stage
@@ -169,7 +169,7 @@ export default function App() {
               }
             }}
           >
-            🎯 Apply Now
+            🎯 Apply
           </button>
         </div>
         

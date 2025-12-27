@@ -28,39 +28,43 @@ const FAQ = () => {
     },
     {
       question: "How much time do I need to commit?",
-      answer: "Minimum 20 hours per week. This isn't a side hobby—it's a serious alternative to university. Daily check-ins, weekly skill sessions, and real client work. If you're not ready to commit fully, this isn't for you."
+      answer: "20 hours/week minimum. Daily check-ins. Weekly skill sessions. Real client work. This isn't a side hobby—it's a career."
     },
     {
       question: "Do I need marketing experience?",
-      answer: "No prior experience required. We teach you everything from the ground up. What we look for is hunger, coachability, and integrity. Skills can be taught—character cannot."
+      answer: "None required. We teach everything from scratch. We look for hunger, coachability, and integrity. Skills can be taught—character cannot."
     },
     {
       question: "What age range is this for?",
-      answer: "Primarily 17-24, but we accept exceptional candidates of any age. What matters more than age is your mindset, commitment level, and willingness to grow."
+      answer: "Primarily 17-24, but we accept exceptional candidates of any age. Mindset matters more than birthdate."
     },
     {
       question: "How do I get paid?",
-      answer: "You earn through client work. As you develop skills and take on campaigns, you'll work with real businesses and earn real income. Top performers can earn $3,000-$5,000/month within their first year."
+      answer: "Commission on client work. Book appointments = earn. Close deals = earn more. Top performers hit $3K-$5K/month within their first year."
     },
     {
       question: "What if I get rejected?",
-      answer: "Rejection isn't permanent—it's feedback. We'll tell you exactly why and what you need to work on. Many successful members applied 2-3 times before getting in. Use the feedback, improve, and reapply."
+      answer: "Rejection = feedback. We'll tell you exactly why. Many successful members applied 2-3 times. Use the feedback, improve, reapply."
     },
     {
       question: "Can I do this while working or studying?",
-      answer: "It depends on your other commitments. The Pod requires 20+ hours/week of focused work. Some members balance part-time jobs, but we don't recommend trying to do this alongside full-time university. You need to choose your path."
+      answer: "Part-time job? Usually fine. Full-time university? Pick one or the other. The Pod requires 20+ focused hours/week."
     },
     {
       question: "Where are you located?",
-      answer: "The Pod operates primarily online, with members across multiple countries. We use daily digital standups, weekly video calls, and collaborative tools. Some regions have in-person meetups and events."
+      answer: "100% remote. Members across 12+ countries. Daily digital standups, weekly video calls, and collaborative tools. Some regions have in-person meetups."
     },
     {
       question: "How long is the program?",
-      answer: "There's no fixed 'graduation date.' The Pod is a community and career path, not a course. Most members hit significant milestones (first client, first $1K month, first $5K month) within 6-12 months. Many stay for years as they grow into leadership roles."
+      answer: "No fixed end date—this is a career path, not a course. Most hit their first $1K month in 3-6 months. First $5K month in 6-12 months. Many stay for years as they grow into leadership."
     },
     {
       question: "What makes this different from online courses or bootcamps?",
-      answer: "Courses give you information. The Pod gives you transformation. You're not watching videos alone—you're embedded in a team, accountable to peers, working with real clients, and building real reputation. It's the difference between reading about swimming and actually getting in the water."
+      answer: "Courses = information. The Pod = transformation. You're not watching videos alone—you're on a team, accountable to peers, working with real clients. It's the difference between reading about swimming and getting in the water."
+    },
+    {
+      question: "What if it's not for me?",
+      answer: "If it's not the right fit after 30 days, no hard feelings. We'll part ways and you keep everything you learned. We only want people who are all-in."
     },
   ];
 

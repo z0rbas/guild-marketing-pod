@@ -4,29 +4,29 @@ const ProofOfWork = () => {
   const [activeTab, setActiveTab] = useState('stats');
   
   const results = [
-    { metric: '127', label: 'Appointments Set', sublabel: 'Last 30 days', icon: '📅' },
-    { metric: '34', label: 'Deals Closed', sublabel: 'Last 30 days', icon: '🤝' },
-    { metric: '$89K', label: 'Revenue Generated', sublabel: 'For clients', icon: '💰' },
-    { metric: '12', label: 'Active Campaigns', sublabel: 'Running now', icon: '📡' },
+    { metric: '127', label: 'Appointments Set', sublabel: 'This month (↑ from 89)', icon: '📅' },
+    { metric: '34', label: 'Deals Closed', sublabel: 'This month (↑ from 22)', icon: '🤝' },
+    { metric: '$89K', label: 'Revenue Generated', sublabel: 'For clients this month', icon: '💰' },
+    { metric: '12', label: 'Active Campaigns', sublabel: 'Across 6 industries', icon: '📡' },
   ];
 
   const testimonials = [
     {
-      quote: "I was working at a grocery store making $15/hr. Three months in, I made $2,400 in one week from setting appointments. This is real.",
+      quote: "I was bagging groceries at $15/hr, living at home, no idea what I wanted to do. Three months into the Pod, I closed my first $2,400 week—setting appointments for a roofing company in Texas. My manager at the store couldn't believe I quit.",
       name: "Marcus T.",
       age: 19,
       phase: "Phase 3 Setter",
       result: "$2,400/week"
     },
     {
-      quote: "My parents wanted me to go to university. I showed them my first $5K month and they stopped asking. Now they tell their friends about it.",
+      quote: "My parents were furious when I said no to university. They'd saved for years. Three months later, I showed them my first $5K month closing deals for a SaaS company. Now my dad asks ME for business advice.",
       name: "Sarah K.",
       age: 21,
       phase: "Phase 4 Closer",
       result: "$5,000/month"
     },
     {
-      quote: "I dropped out of business school after one semester. Best decision I ever made. I've learned more in 6 months here than I would in 4 years there.",
+      quote: "I was $12K into a business degree when I realized I was learning theory from professors who'd never run a business. Dropped out. Six months in the Pod and I've made $25K, learned more, and actually helped real companies grow.",
       name: "James R.",
       age: 20,
       phase: "Phase 4 Closer",
@@ -163,7 +163,7 @@ const ProofOfWork = () => {
             color: '#6a6a7a',
             textAlign: 'center',
           }}>
-            Real members. Real results. Your story could be next.
+            200+ members trained since 2024. These are real people. Real results. Your story could be next.
           </div>
         </div>
       )}

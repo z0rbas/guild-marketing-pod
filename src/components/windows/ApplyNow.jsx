@@ -146,11 +146,28 @@ const ApplyNow = () => {
   return (
     <div style={{ color: '#e0e0e0', fontFamily: 'system-ui' }}>
       <h2 style={{ color: '#d4af37', fontSize: 18, marginBottom: 8, fontWeight: 600 }}>
-        Apply to Join The Pod
+        Your Application (2 min)
       </h2>
-      <p style={{ color: '#6a6a7a', fontSize: 12, marginBottom: 24 }}>
+      <p style={{ color: '#6a6a7a', fontSize: 12, marginBottom: 16 }}>
         Not everyone gets in. That's by design. Show us you're serious.
       </p>
+      
+      {/* Urgency Banner */}
+      <div style={{
+        padding: 12,
+        background: 'rgba(255,200,50,0.1)',
+        border: '1px solid rgba(255,200,50,0.2)',
+        borderRadius: 8,
+        marginBottom: 20,
+        fontSize: 12,
+        color: '#f0c030',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 8,
+      }}>
+        <span>⚡</span>
+        <span><strong>Summer 2025 Cohort:</strong> Only 12 spots remaining. Applications close July 15.</span>
+      </div>
 
       {/* Error Message */}
       {submitStatus === 'error' && (
@@ -183,7 +200,7 @@ const ApplyNow = () => {
               value={formData.firstName}
               onChange={handleChange}
               required
-              placeholder="John"
+              placeholder="Your first name"
               style={inputStyle}
               onFocus={(e) => {
                 e.target.style.borderColor = '#d4af37';
@@ -202,7 +219,7 @@ const ApplyNow = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              placeholder="Doe"
+              placeholder="Your last name"
               style={inputStyle}
               onFocus={(e) => {
                 e.target.style.borderColor = '#d4af37';
@@ -322,7 +339,7 @@ const ApplyNow = () => {
             value={formData.goals}
             onChange={handleChange}
             required
-            placeholder="Tell us what you want to achieve and why you want to join The Pod..."
+            placeholder="In 2-3 sentences: What do you want your life to look like in 12 months? Why the Pod?"
             rows={4}
             style={{ 
               ...inputStyle, 

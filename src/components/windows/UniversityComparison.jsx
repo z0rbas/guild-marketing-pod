@@ -103,7 +103,7 @@ const UniversityComparison = () => {
         transform: isVisible ? 'translateY(0)' : 'translateY(-10px)',
         transition: 'all 0.5s ease',
       }}>
-        The Truth They Won't Tell You
+        Why Your Guidance Counselor Won't Show You This
       </h2>
       <p style={{ 
         color: '#6a6a7a', 

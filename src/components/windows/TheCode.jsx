@@ -3,28 +3,28 @@ import React, { useState, useEffect, useRef } from 'react';
 const TheCode = () => {
   const values = [
     { 
-      title: 'Honor', 
-      desc: 'Your word is your bond. Always.',
+      title: 'Honour', 
+      desc: 'If you say 9am, you\'re there at 8:55.',
       expanded: 'In a world of broken promises and ghosted commitments, we do what we say. Every time. No exceptions. This is the foundation everything else is built on.',
-      examples: ['Show up when you say you will', 'Deliver what you promise', 'Own your mistakes immediately']
+      examples: ['Meeting at 9am? Be there at 8:55.', 'Said you\'d send it today? It\'s in their inbox by 5pm.', 'Made a mistake? Own it within the hour, not the week.']
     },
     { 
       title: 'Sovereignty', 
-      desc: 'Own your path. No excuses.',
+      desc: 'Lost a deal? It\'s on you. Won a deal? Also you.',
       expanded: 'You are 100% responsible for your results. Not your circumstances, not your past, not the market. You. This is terrifying and liberating at the same time.',
-      examples: ['No blaming external factors', 'Take initiative without being asked', 'Make decisions and own outcomes']
+      examples: ['Lead didn\'t respond? Test a new approach.', 'Campaign underperforming? Find the fix.', 'Need something done? Don\'t wait to be asked.']
     },
     { 
       title: 'Service', 
-      desc: 'Create real value for real people.',
+      desc: 'Would you sell this to your mom?',
       expanded: 'We\'re not here to extract value — we\'re here to create it. Every appointment we book, every deal we close, should leave the client better off than before.',
-      examples: ['Focus on client outcomes, not just metrics', 'Only sell what actually helps', 'Go above and beyond expectations']
+      examples: ['If it won\'t help them, don\'t pitch it.', 'Overdeliver on every promise.', 'Their success is your success.']
     },
     { 
       title: 'Presence', 
-      desc: 'Show up fully. Every single day.',
+      desc: 'Phone off. Tabs closed. Do the work.',
       expanded: 'Half-effort gets zero results. When you\'re working, work. When you\'re on a call, be fully there. Distraction is the enemy of mastery.',
-      examples: ['Full focus during work hours', 'Active engagement in training', 'Consistent daily execution']
+      examples: ['On a call? Be 100% there.', 'Working hours? No Instagram.', 'Said 4 hours today? Do 4 real hours.']
     },
   ];
 
