@@ -51,12 +51,12 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 10000,
-      perspective: '1000px',
+      perspective: '1400px',
     }}>
       {/* 3D Dock Container with perspective */}
       <div style={{
         position: 'relative',
-        perspective: isMobile ? 'none' : '1200px',
+        perspective: isMobile ? 'none' : '1400px',
         perspectiveOrigin: 'center bottom',
       }}>
         {/* The dock shelf - 3D angled glass surface */}
@@ -65,26 +65,26 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'center',
-          gap: isMobile ? 6 : 10,
-          padding: isMobile ? '6px 12px 8px' : '8px 20px 12px',
+          gap: isMobile ? 6 : 12,
+          padding: isMobile ? '6px 12px 8px' : '10px 24px 14px',
           // Glass gradient - lighter at back (top), darker at front (bottom)
           background: isMobile 
             ? 'rgba(40,40,50,0.9)'
-            : 'linear-gradient(to bottom, rgba(140,140,160,0.4) 0%, rgba(100,100,120,0.5) 40%, rgba(60,60,80,0.7) 100%)',
+            : 'linear-gradient(to bottom, rgba(200,200,210,0.35) 0%, rgba(150,150,165,0.4) 40%, rgba(90,90,110,0.55) 100%)',
           backdropFilter: 'blur(30px)',
           WebkitBackdropFilter: 'blur(30px)',
-          borderRadius: isMobile ? '16px 16px 0 0' : '4px 4px 8px 8px',
+          borderRadius: isMobile ? '16px 16px 0 0' : '6px 6px 10px 10px',
           border: isMobile ? 'none' : '1px solid rgba(255,255,255,0.25)',
           borderTop: isMobile ? 'none' : '1px solid rgba(255,255,255,0.5)',
           borderBottom: isMobile ? 'none' : '1px solid rgba(40,40,60,0.8)',
           // Subtle 3D tilt - see the top surface
-          transform: isMobile ? 'none' : 'rotateX(12deg)',
+          transform: isMobile ? 'none' : 'rotateX(24deg)',
           transformOrigin: 'center bottom',
           transformStyle: 'preserve-3d',
           boxShadow: isMobile ? '0 -10px 40px rgba(0,0,0,0.3)' : `
-            0 20px 50px -10px rgba(0,0,0,0.5),
-            inset 0 1px 0 rgba(255,255,255,0.3),
-            inset 0 -2px 4px rgba(0,0,0,0.2)
+            0 25px 55px -12px rgba(0,0,0,0.55),
+            inset 0 1px 0 rgba(255,255,255,0.28),
+            inset 0 -2px 4px rgba(0,0,0,0.22)
           `,
         }}>
           {/* Glass shine/reflection on top surface */}
@@ -94,9 +94,9 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               top: 0,
               left: 0,
               right: 0,
-              height: '60%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)',
-              borderRadius: '4px 4px 0 0',
+              height: '55%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.05) 55%, transparent 100%)',
+              borderRadius: '6px 6px 0 0',
               pointerEvents: 'none',
             }} />
           )}
@@ -108,9 +108,9 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               left: 0,
               right: 0,
               bottom: 0,
-              height: 18,
-              background: 'linear-gradient(to bottom, rgba(70,70,90,1) 0%, rgba(40,40,55,1) 60%, rgba(25,25,35,1) 100%)',
-              borderRadius: '0 0 8px 8px',
+              height: 14,
+              background: 'linear-gradient(to bottom, rgba(120,120,135,0.95) 0%, rgba(80,80,95,0.98) 60%, rgba(45,45,60,1) 100%)',
+              borderRadius: '0 0 10px 10px',
               transform: 'rotateX(-90deg) translateZ(0px)',
               transformOrigin: 'top center',
               boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 5px 15px rgba(0,0,0,0.3)',
@@ -132,7 +132,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-12deg)',
+              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-24deg)',
               transformStyle: 'preserve-3d',
               display: 'flex',
               flexDirection: 'column-reverse',
@@ -228,7 +228,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 // Counter-rotate to stand upright on the tilted shelf
                 transform: isMobile 
                   ? (expandedStack === stack.id ? 'translateY(-8px)' : 'translateY(0)')
-                  : (expandedStack === stack.id ? 'rotateX(-12deg) translateY(-12px)' : 'rotateX(-12deg) translateY(0)'),
+                  : (expandedStack === stack.id ? 'rotateX(-24deg) translateY(-14px)' : 'rotateX(-24deg) translateY(0)'),
                 transformStyle: 'preserve-3d',
                 position: 'relative',
               }}
@@ -354,12 +354,12 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
           {/* Surface the dock sits on */}
           <div style={{
             position: 'absolute',
-            bottom: -8,
+            bottom: -12,
             left: '50%',
-            transform: 'translateX(-50%) perspective(800px) rotateX(75deg)',
-            width: '140%',
-            height: 80,
-            background: 'linear-gradient(to bottom, rgba(100,100,120,0.15) 0%, transparent 60%)',
+            transform: 'translateX(-50%) perspective(900px) rotateX(78deg)',
+            width: '150%',
+            height: 90,
+            background: 'linear-gradient(to bottom, rgba(140,140,155,0.16) 0%, transparent 65%)',
             pointerEvents: 'none',
           }} />
           {/* Dock reflection on that surface */}
@@ -370,9 +370,9 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             right: 0,
             height: 60,
             background: 'linear-gradient(to bottom, rgba(80,80,100,0.2) 0%, transparent 100%)',
-            transform: 'scaleY(-1) rotateX(12deg)',
+            transform: 'scaleY(-1) rotateX(24deg)',
             transformOrigin: 'top center',
-            opacity: 0.4,
+            opacity: 0.5,
             filter: 'blur(3px)',
             pointerEvents: 'none',
             borderRadius: '0 0 8px 8px',
