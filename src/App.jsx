@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BootSequence from './components/BootSequence';
 import SalesLetter from './components/SalesLetter';
 import Window from './components/Window';
-import DockIcon from './components/DockIcon';
+import Dock3D from './components/Dock3D';
 
 // Import window content components
 import UniversityComparison from './components/windows/UniversityComparison';
@@ -23,7 +23,6 @@ export default function App() {
   const [windowOrder, setWindowOrder] = useState(['apply']);
   const [time, setTime] = useState(new Date());
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
-  const [hoveredDockIndex, setHoveredDockIndex] = useState(-1);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -78,15 +77,6 @@ export default function App() {
     { id: 'apply', title: 'Your Application', icon: '🎯', component: <ApplyNow />, position: { x: 180, y: 60 }, width: 440, height: 700 },
   ];
 
-  // Calculate dock icon scales for magnification effect
-  const getDockScale = (index) => {
-    if (isMobile || hoveredDockIndex === -1) return 1;
-    const distance = Math.abs(index - hoveredDockIndex);
-    if (distance === 0) return 1.4;
-    if (distance === 1) return 1.25;
-    if (distance === 2) return 1.1;
-    return 1;
-  };
 
   // Boot stage
   if (stage === 'boot') {
@@ -270,53 +260,12 @@ export default function App() {
         ))}
       </div>
 
-      {/* Dock */}
-      <div 
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          background: 'rgba(20,20,25,0.95)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: isMobile ? 0 : 16,
-          borderTop: '1px solid #2a2a35',
-          border: isMobile ? 'none' : '1px solid #2a2a35',
-          borderBottom: isMobile ? 'none' : '1px solid #2a2a35',
-          padding: isMobile ? '4px 8px 8px' : '8px 12px 12px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-end',
-          gap: isMobile ? 2 : 0,
-          zIndex: 10000,
-          ...(isMobile ? {} : {
-            left: '50%',
-            right: 'auto',
-            transform: 'translateX(-50%)',
-            bottom: 12,
-            width: 'auto',
-          }),
-          overflowX: isMobile ? 'auto' : 'visible',
-          WebkitOverflowScrolling: 'touch',
-          minHeight: isMobile ? 'auto' : 80,
-        }}
-        onMouseLeave={() => setHoveredDockIndex(-1)}
-      >
-        {windows.filter(win => win.id !== 'apply').map((win, index) => (
-          <div 
-            key={win.id}
-            onMouseEnter={() => !isMobile && setHoveredDockIndex(index)}
-          >
-            <DockIcon
-              icon={win.icon}
-              label={win.title.split(' ')[0]}
-              isActive={openWindows.includes(win.id)}
-              onClick={() => toggleWindow(win.id)}
-              scale={getDockScale(index)}
-            />
-          </div>
-        ))}
-      </div>
+      {/* 3D Dock */}
+      <Dock3D 
+        windows={windows.filter(win => win.id !== 'apply')}
+        openWindows={openWindows}
+        onToggleWindow={toggleWindow}
+      />
 
       {/* Subtle grid pattern */}
       <div style={{
