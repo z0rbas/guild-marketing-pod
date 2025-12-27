@@ -200,7 +200,7 @@ const UniversityComparison = () => {
         </div>
       </div>
 
-      {/* 4-Year Trajectory Chart */}
+      {/* 4-Year Trajectory Chart - Bar + Line */}
       <div style={{ marginTop: 28 }}>
         <div style={{ 
           fontSize: 11, 
@@ -222,167 +222,272 @@ const UniversityComparison = () => {
           opacity: isVisible ? 1 : 0,
           transition: 'all 0.5s ease 0.7s',
         }}>
-          {/* Chart */}
-          <div style={{ position: 'relative', height: 200, marginBottom: 16 }}>
-            {/* Zero line */}
-            <div style={{
-              position: 'absolute',
-              left: 40,
-              right: 0,
-              top: getY(0),
-              height: 1,
-              background: '#3a3a45',
-              zIndex: 1,
-            }}>
-              <span style={{ 
-                position: 'absolute', 
-                left: -40, 
-                top: -8, 
-                fontSize: 10, 
-                color: '#4a4a5a',
-                width: 35,
-                textAlign: 'right',
-              }}>$0</span>
-            </div>
-            
+          {/* Bar + Line Chart */}
+          <div style={{ position: 'relative', height: 240, marginBottom: 16 }}>
             {/* Y-axis labels */}
-            <div style={{ position: 'absolute', left: 0, top: getY(150000) - 6, fontSize: 9, color: '#4a4a5a' }}>+$150K</div>
-            <div style={{ position: 'absolute', left: 0, top: getY(-100000) - 6, fontSize: 9, color: '#4a4a5a' }}>-$100K</div>
+            <div style={{ position: 'absolute', left: 0, top: 5, fontSize: 9, color: '#4a4a5a' }}>+$168K</div>
+            <div style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', fontSize: 10, color: '#5a5a6a', fontWeight: 600 }}>$0</div>
+            <div style={{ position: 'absolute', left: 0, bottom: 25, fontSize: 9, color: '#4a4a5a' }}>-$108K</div>
             
-            {/* Grid lines */}
-            {[100000, 50000, -50000, -100000].map((val, i) => (
-              <div key={i} style={{
+            {/* Chart area */}
+            <div style={{ 
+              position: 'absolute', 
+              left: 45, 
+              right: 0, 
+              top: 0, 
+              bottom: 25,
+              borderLeft: '1px solid #3a3a45',
+              borderBottom: '1px solid #3a3a45',
+            }}>
+              {/* Zero line */}
+              <div style={{
                 position: 'absolute',
-                left: 40,
+                left: 0,
                 right: 0,
-                top: getY(val),
-                height: 1,
-                background: '#2a2a35',
-                opacity: 0.5,
+                top: '60.87%', // 168/(168+108) = 60.87%
+                height: 2,
+                background: '#4a4a5a',
+                zIndex: 5,
               }} />
-            ))}
-            
-            {/* SVG for animated lines */}
-            <svg style={{ position: 'absolute', left: 40, top: 0, width: 'calc(100% - 40px)', height: '100%', overflow: 'visible' }}>
-              <defs>
-                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#d4af37" />
-                  <stop offset="100%" stopColor="#f4d03f" />
-                </linearGradient>
-                <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#ff6b6b" />
-                  <stop offset="100%" stopColor="#ff4757" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
               
-              {/* University path (red) - animated */}
-              <path
-                d={universityPath.map((p, i) => `${i === 0 ? 'M' : 'L'} ${(i / 4) * 100}% ${getY(p.amount)}`).join(' ')}
-                fill="none"
-                stroke="url(#redGradient)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                filter="url(#glow)"
-                style={{
-                  strokeDasharray: 500,
-                  strokeDashoffset: chartAnimated ? 0 : 500,
-                  transition: 'stroke-dashoffset 1.5s ease-out',
-                }}
-              />
-              
-              {/* Pod path (gold) - animated */}
-              <path
-                d={podPath.map((p, i) => `${i === 0 ? 'M' : 'L'} ${(i / 4) * 100}% ${getY(p.amount)}`).join(' ')}
-                fill="none"
-                stroke="url(#goldGradient)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                filter="url(#glow)"
-                style={{
-                  strokeDasharray: 500,
-                  strokeDashoffset: chartAnimated ? 0 : 500,
-                  transition: 'stroke-dashoffset 1.5s ease-out 0.3s',
-                }}
-              />
-              
-              {/* Data points - University */}
-              {universityPath.map((p, i) => (
-                <circle
-                  key={`uni-${i}`}
-                  cx={`${(i / 4) * 100}%`}
-                  cy={getY(p.amount)}
-                  r="5"
-                  fill="#0a0a0f"
-                  stroke="#ff6b6b"
-                  strokeWidth="2"
-                  style={{
-                    opacity: chartAnimated ? 1 : 0,
-                    transform: chartAnimated ? 'scale(1)' : 'scale(0)',
-                    transformOrigin: 'center',
-                    transformBox: 'fill-box',
-                    transition: `all 0.3s ease ${0.3 + i * 0.15}s`,
-                  }}
-                />
+              {/* Grid lines */}
+              {[25, 50, 75].map((pct, i) => (
+                <div key={i} style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  top: `${pct}%`,
+                  height: 1,
+                  background: '#2a2a35',
+                  opacity: 0.5,
+                }} />
               ))}
               
-              {/* Data points - Pod */}
-              {podPath.map((p, i) => (
-                <circle
-                  key={`pod-${i}`}
-                  cx={`${(i / 4) * 100}%`}
-                  cy={getY(p.amount)}
-                  r="5"
-                  fill="#0a0a0f"
+              {/* Bars container */}
+              <div style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'stretch',
+                paddingTop: 10,
+                paddingBottom: 10,
+              }}>
+                {[1, 2, 3, 4].map((year) => {
+                  const uniAmount = universityPath[year].amount;
+                  const podAmount = podPath[year].amount;
+                  const zeroLinePos = 60.87; // percentage from top
+                  const chartHeight = 100; // percentage
+                  
+                  // Calculate bar heights (percentage of chart)
+                  const uniBarHeight = Math.abs(uniAmount) / 276000 * 100 * 0.9;
+                  const podBarHeight = Math.abs(podAmount) / 276000 * 100 * 0.9;
+                  
+                  return (
+                    <div key={year} style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      flex: 1,
+                      position: 'relative',
+                      height: '100%',
+                    }}>
+                      {/* Pod bar (above zero line) */}
+                      <div style={{
+                        position: 'absolute',
+                        bottom: `${100 - zeroLinePos}%`,
+                        width: isMobile ? 16 : 24,
+                        height: chartAnimated ? `${podBarHeight}%` : '0%',
+                        background: 'linear-gradient(180deg, #f4d03f 0%, #d4af37 100%)',
+                        borderRadius: '4px 4px 0 0',
+                        boxShadow: '0 0 10px rgba(212,175,55,0.3)',
+                        transition: `height 0.8s ease ${0.3 + year * 0.15}s`,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'flex-start',
+                        paddingTop: 4,
+                      }}>
+                        {chartAnimated && podAmount > 30000 && (
+                          <span style={{ 
+                            fontSize: 8, 
+                            color: '#0a0a0f', 
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            +${(podAmount / 1000).toFixed(0)}K
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* University bar (below zero line) */}
+                      <div style={{
+                        position: 'absolute',
+                        top: `${zeroLinePos}%`,
+                        width: isMobile ? 16 : 24,
+                        marginLeft: isMobile ? 18 : 28,
+                        height: chartAnimated ? `${uniBarHeight}%` : '0%',
+                        background: 'linear-gradient(180deg, #ff6b6b 0%, #ff4757 100%)',
+                        borderRadius: '0 0 4px 4px',
+                        boxShadow: '0 0 10px rgba(255,107,107,0.3)',
+                        transition: `height 0.8s ease ${0.2 + year * 0.15}s`,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'flex-end',
+                        paddingBottom: 4,
+                      }}>
+                        {chartAnimated && Math.abs(uniAmount) > 20000 && (
+                          <span style={{ 
+                            fontSize: 8, 
+                            color: '#fff', 
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            -${(Math.abs(uniAmount) / 1000).toFixed(0)}K
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* SVG for trend lines overlay */}
+              <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 10 }}>
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#d4af37" />
+                    <stop offset="100%" stopColor="#f4d03f" />
+                  </linearGradient>
+                  <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ff6b6b" />
+                    <stop offset="100%" stopColor="#ff4757" />
+                  </linearGradient>
+                  <filter id="lineGlow">
+                    <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                
+                {/* Pod trend line (gold) */}
+                <polyline
+                  points={podPath.slice(1).map((p, i) => {
+                    const x = ((i + 0.5) / 4) * 100;
+                    const y = 60.87 - (p.amount / 276000 * 100 * 0.9);
+                    return `${x}%,${y}%`;
+                  }).join(' ')}
+                  fill="none"
                   stroke="#d4af37"
                   strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#lineGlow)"
                   style={{
-                    opacity: chartAnimated ? 1 : 0,
-                    transform: chartAnimated ? 'scale(1)' : 'scale(0)',
-                    transformOrigin: 'center',
-                    transformBox: 'fill-box',
-                    transition: `all 0.3s ease ${0.5 + i * 0.15}s`,
+                    strokeDasharray: 400,
+                    strokeDashoffset: chartAnimated ? 0 : 400,
+                    transition: 'stroke-dashoffset 1.2s ease-out 0.8s',
                   }}
                 />
-              ))}
-            </svg>
+                
+                {/* University trend line (red) */}
+                <polyline
+                  points={universityPath.slice(1).map((p, i) => {
+                    const x = ((i + 0.5) / 4) * 100 + 5;
+                    const y = 60.87 + (Math.abs(p.amount) / 276000 * 100 * 0.9);
+                    return `${x}%,${y}%`;
+                  }).join(' ')}
+                  fill="none"
+                  stroke="#ff6b6b"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  filter="url(#lineGlow)"
+                  style={{
+                    strokeDasharray: 400,
+                    strokeDashoffset: chartAnimated ? 0 : 400,
+                    transition: 'stroke-dashoffset 1.2s ease-out 0.6s',
+                  }}
+                />
+                
+                {/* Data points */}
+                {podPath.slice(1).map((p, i) => {
+                  const x = ((i + 0.5) / 4) * 100;
+                  const y = 60.87 - (p.amount / 276000 * 100 * 0.9);
+                  return (
+                    <circle
+                      key={`pod-${i}`}
+                      cx={`${x}%`}
+                      cy={`${y}%`}
+                      r="4"
+                      fill="#0a0a0f"
+                      stroke="#d4af37"
+                      strokeWidth="2"
+                      style={{
+                        opacity: chartAnimated ? 1 : 0,
+                        transition: `opacity 0.3s ease ${1.2 + i * 0.1}s`,
+                      }}
+                    />
+                  );
+                })}
+                {universityPath.slice(1).map((p, i) => {
+                  const x = ((i + 0.5) / 4) * 100 + 5;
+                  const y = 60.87 + (Math.abs(p.amount) / 276000 * 100 * 0.9);
+                  return (
+                    <circle
+                      key={`uni-${i}`}
+                      cx={`${x}%`}
+                      cy={`${y}%`}
+                      r="4"
+                      fill="#0a0a0f"
+                      stroke="#ff6b6b"
+                      strokeWidth="2"
+                      style={{
+                        opacity: chartAnimated ? 1 : 0,
+                        transition: `opacity 0.3s ease ${1 + i * 0.1}s`,
+                      }}
+                    />
+                  );
+                })}
+              </svg>
+            </div>
             
             {/* X-axis labels */}
             <div style={{ 
               position: 'absolute', 
-              bottom: -20, 
-              left: 40, 
+              bottom: 0, 
+              left: 45, 
               right: 0, 
               display: 'flex', 
-              justifyContent: 'space-between',
+              justifyContent: 'space-around',
               fontSize: 10,
-              color: '#4a4a5a',
+              color: '#6a6a7a',
+              fontWeight: 500,
             }}>
-              <span>Start</span>
-              <span>Yr 1</span>
-              <span>Yr 2</span>
-              <span>Yr 3</span>
-              <span>Yr 4</span>
+              <span>Year 1</span>
+              <span>Year 2</span>
+              <span>Year 3</span>
+              <span>Year 4</span>
             </div>
           </div>
           
           {/* Legend */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 24, marginTop: 24, paddingTop: 16, borderTop: '1px solid #2a2a35' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? 16 : 32, marginTop: 20, paddingTop: 16, borderTop: '1px solid #2a2a35', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 12, height: 3, background: '#ff6b6b', borderRadius: 2 }} />
-              <span style={{ fontSize: 11, color: '#8a8a9a' }}>University Path</span>
+              <div style={{ width: 14, height: 14, background: 'linear-gradient(180deg, #ff6b6b 0%, #ff4757 100%)', borderRadius: 3 }} />
+              <span style={{ fontSize: 11, color: '#8a8a9a' }}>University (Debt)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 12, height: 3, background: '#d4af37', borderRadius: 2 }} />
-              <span style={{ fontSize: 11, color: '#8a8a9a' }}>Marketing Pod</span>
+              <div style={{ width: 14, height: 14, background: 'linear-gradient(180deg, #f4d03f 0%, #d4af37 100%)', borderRadius: 3 }} />
+              <span style={{ fontSize: 11, color: '#8a8a9a' }}>Marketing Pod (Earnings)</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 14, height: 2, background: '#6a6a7a', borderRadius: 1 }} />
+              <span style={{ fontSize: 11, color: '#8a8a9a' }}>Trend Line</span>
             </div>
           </div>
         </div>
