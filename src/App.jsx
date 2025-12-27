@@ -132,7 +132,7 @@ export default function App() {
             fontWeight: 700,
             letterSpacing: 2,
           }}>
-            GUILD OS
+            GUILD OF HONOUR
           </span>
         </div>
         

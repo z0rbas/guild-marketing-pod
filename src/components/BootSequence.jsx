@@ -6,7 +6,7 @@ const BootSequence = ({ onComplete }) => {
   const [glitch, setGlitch] = useState(false);
   
   const bootLines = [
-    { text: 'GUILD OS v2.026', delay: 0 },
+    { text: 'GUILD OF HONOUR // MARKETING POD AREA', delay: 0 },
     { text: 'Initializing sovereign protocols...', delay: 400 },
     { text: 'Loading skill modules...', delay: 800 },
     { text: 'Connecting to mentor network...', delay: 1200 },
