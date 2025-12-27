@@ -354,19 +354,24 @@ const UniversityComparison = () => {
                 })}
               </div>
               
-              {/* SVG for trend lines overlay */}
-              <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 10 }}>
+              {/* SVG for trend lines overlay - using viewBox for proper scaling */}
+              <svg 
+                viewBox="0 0 100 100" 
+                preserveAspectRatio="none"
+                style={{ 
+                  position: 'absolute', 
+                  left: 0, 
+                  top: 0, 
+                  width: '100%', 
+                  height: '100%', 
+                  overflow: 'visible', 
+                  pointerEvents: 'none', 
+                  zIndex: 10 
+                }}
+              >
                 <defs>
-                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#d4af37" />
-                    <stop offset="100%" stopColor="#f4d03f" />
-                  </linearGradient>
-                  <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#ff6b6b" />
-                    <stop offset="100%" stopColor="#ff4757" />
-                  </linearGradient>
                   <filter id="lineGlow">
-                    <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="0.5" result="coloredBlur"/>
                     <feMerge>
                       <feMergeNode in="coloredBlur"/>
                       <feMergeNode in="SourceGraphic"/>
@@ -374,59 +379,59 @@ const UniversityComparison = () => {
                   </filter>
                 </defs>
                 
-                {/* Pod trend line (gold) */}
+                {/* Pod trend line (gold) - going UP */}
                 <polyline
                   points={podPath.slice(1).map((p, i) => {
-                    const x = ((i + 0.5) / 4) * 100;
-                    const y = 60.87 - (p.amount / 276000 * 100 * 0.9);
-                    return `${x}%,${y}%`;
+                    const x = 12.5 + (i * 25); // 12.5, 37.5, 62.5, 87.5
+                    const y = 60.87 - (p.amount / 276000 * 55); // Scale to fit
+                    return `${x},${y}`;
                   }).join(' ')}
                   fill="none"
                   stroke="#d4af37"
-                  strokeWidth="2"
+                  strokeWidth="0.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   filter="url(#lineGlow)"
                   style={{
-                    strokeDasharray: 400,
-                    strokeDashoffset: chartAnimated ? 0 : 400,
+                    strokeDasharray: chartAnimated ? 'none' : '200',
+                    strokeDashoffset: chartAnimated ? 0 : 200,
                     transition: 'stroke-dashoffset 1.2s ease-out 0.8s',
                   }}
                 />
                 
-                {/* University trend line (red) */}
+                {/* University trend line (red) - going DOWN */}
                 <polyline
                   points={universityPath.slice(1).map((p, i) => {
-                    const x = ((i + 0.5) / 4) * 100 + 5;
-                    const y = 60.87 + (Math.abs(p.amount) / 276000 * 100 * 0.9);
-                    return `${x}%,${y}%`;
+                    const x = 12.5 + (i * 25) + 5; // Offset slightly
+                    const y = 60.87 + (Math.abs(p.amount) / 276000 * 55);
+                    return `${x},${y}`;
                   }).join(' ')}
                   fill="none"
                   stroke="#ff6b6b"
-                  strokeWidth="2"
+                  strokeWidth="0.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   filter="url(#lineGlow)"
                   style={{
-                    strokeDasharray: 400,
-                    strokeDashoffset: chartAnimated ? 0 : 400,
+                    strokeDasharray: chartAnimated ? 'none' : '200',
+                    strokeDashoffset: chartAnimated ? 0 : 200,
                     transition: 'stroke-dashoffset 1.2s ease-out 0.6s',
                   }}
                 />
                 
-                {/* Data points */}
+                {/* Data points - Pod (gold circles going up) */}
                 {podPath.slice(1).map((p, i) => {
-                  const x = ((i + 0.5) / 4) * 100;
-                  const y = 60.87 - (p.amount / 276000 * 100 * 0.9);
+                  const x = 12.5 + (i * 25);
+                  const y = 60.87 - (p.amount / 276000 * 55);
                   return (
                     <circle
                       key={`pod-${i}`}
-                      cx={`${x}%`}
-                      cy={`${y}%`}
-                      r="4"
+                      cx={x}
+                      cy={y}
+                      r="1.5"
                       fill="#0a0a0f"
                       stroke="#d4af37"
-                      strokeWidth="2"
+                      strokeWidth="0.5"
                       style={{
                         opacity: chartAnimated ? 1 : 0,
                         transition: `opacity 0.3s ease ${1.2 + i * 0.1}s`,
@@ -434,18 +439,20 @@ const UniversityComparison = () => {
                     />
                   );
                 })}
+                
+                {/* Data points - University (red circles going down) */}
                 {universityPath.slice(1).map((p, i) => {
-                  const x = ((i + 0.5) / 4) * 100 + 5;
-                  const y = 60.87 + (Math.abs(p.amount) / 276000 * 100 * 0.9);
+                  const x = 12.5 + (i * 25) + 5;
+                  const y = 60.87 + (Math.abs(p.amount) / 276000 * 55);
                   return (
                     <circle
                       key={`uni-${i}`}
-                      cx={`${x}%`}
-                      cy={`${y}%`}
-                      r="4"
+                      cx={x}
+                      cy={y}
+                      r="1.5"
                       fill="#0a0a0f"
                       stroke="#ff6b6b"
-                      strokeWidth="2"
+                      strokeWidth="0.5"
                       style={{
                         opacity: chartAnimated ? 1 : 0,
                         transition: `opacity 0.3s ease ${1 + i * 0.1}s`,
