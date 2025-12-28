@@ -127,12 +127,15 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             onMouseLeave={() => !isMobile && setExpandedStack(null)}
             onClick={() => isMobile && setExpandedStack(expandedStack === stack.id ? null : stack.id)}
           >
-            {/* Expanded Stack Items - fan out upward */}
+            {/* Expanded Stack Items - fan out upward, counter-rotated */}
             <div style={{
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: 'translateX(-50%)',
+              // Counter-rotate to restore normal proportions for menu items
+              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-45deg)',
+              transformStyle: 'preserve-3d',
+              transformOrigin: 'center bottom',
               display: 'flex',
               flexDirection: 'column-reverse',
               alignItems: 'center',
@@ -229,17 +232,21 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 position: 'relative',
               }}
             >
-              {/* Simple emoji icon - default flat */}
+              {/* Emoji icon - counter-rotate to restore original dimensions */}
               <div style={{
                 position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'transform 0.2s ease',
-                transform: expandedStack === stack.id ? 'scale(1.15)' : 'scale(1)',
+                // Counter-rotate to cancel out the dock's 45deg tilt - restores normal icon proportions
+                transform: isMobile 
+                  ? (expandedStack === stack.id ? 'scale(1.15)' : 'scale(1)')
+                  : (expandedStack === stack.id ? 'rotateX(-45deg) scale(1.15)' : 'rotateX(-45deg)'),
+                transformStyle: 'preserve-3d',
               }}>
                 <span style={{
-                  fontSize: isMobile ? 32 : 42,
+                  fontSize: isMobile ? 32 : 48,
                 }}>
                   {stack.icon}
                 </span>
