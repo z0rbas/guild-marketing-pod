@@ -51,12 +51,12 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 10000,
-      perspective: '1300px',
+      perspective: '800px',
     }}>
       {/* 3D Dock Container with perspective */}
       <div style={{
         position: 'relative',
-        perspective: isMobile ? 'none' : '1300px',
+        perspective: isMobile ? 'none' : '800px',
         perspectiveOrigin: 'center bottom',
       }}>
         {/* The dock shelf - 3D angled glass surface */}
@@ -77,8 +77,8 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
           border: isMobile ? 'none' : '1px solid rgba(255,255,255,0.25)',
           borderTop: isMobile ? 'none' : '1px solid rgba(255,255,255,0.5)',
           borderBottom: isMobile ? 'none' : '1px solid rgba(40,40,60,0.8)',
-          // Subtle 3D tilt - see the top surface (macOS style)
-          transform: isMobile ? 'none' : 'rotateX(21deg)',
+          // Strong 3D tilt - see the top surface (macOS style)
+          transform: isMobile ? 'none' : 'rotateX(45deg)',
           transformOrigin: 'center bottom',
           transformStyle: 'preserve-3d',
           boxShadow: isMobile ? '0 -10px 40px rgba(0,0,0,0.3)' : `
@@ -132,7 +132,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-21deg)',
+              transform: 'translateX(-50%)',
               transformStyle: 'preserve-3d',
               display: 'flex',
               flexDirection: 'column-reverse',
@@ -212,7 +212,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               })}
             </div>
 
-            {/* Main Stack Icon - counter-rotated to stand upright */}
+            {/* Main Stack Icon - stays perfectly upright */}
             <button
               style={{
                 display: 'flex',
@@ -225,11 +225,8 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 borderRadius: 8,
                 cursor: 'pointer',
                 transition: 'all 0.25s ease',
-                // Counter-rotate to stand upright on the tilted shelf
-                transform: isMobile 
-                  ? (expandedStack === stack.id ? 'translateY(-8px)' : 'translateY(0)')
-                  : (expandedStack === stack.id ? 'rotateX(-18deg) translateY(-10px)' : 'rotateX(-18deg) translateY(0)'),
-                transformStyle: 'preserve-3d',
+                // Icons stay upright - no rotation
+                transform: expandedStack === stack.id ? 'translateY(-8px)' : 'translateY(0)',
                 position: 'relative',
               }}
             >
@@ -242,8 +239,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'transform 0.25s ease',
-                transform: expandedStack === stack.id ? 'scale(1.08) translateY(-3px) rotateX(-6deg)' : 'scale(1) rotateX(-6deg)',
-                transformStyle: 'preserve-3d',
+                transform: expandedStack === stack.id ? 'scale(1.1) translateY(-4px)' : 'scale(1)',
               }}>
                 {/* Stacked cards behind icon */}
                 {!isMobile && stack.items.length > 1 && (
@@ -356,7 +352,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             position: 'absolute',
             bottom: -14,
             left: '50%',
-            transform: 'translateX(-50%) perspective(1100px) rotateX(80deg)',
+            transform: 'translateX(-50%) perspective(600px) rotateX(75deg)',
             width: '170%',
             height: 110,
             background: 'linear-gradient(to bottom, rgba(140,140,155,0.12) 0%, transparent 70%)',
@@ -370,7 +366,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             right: 0,
             height: 70,
             background: 'linear-gradient(to bottom, rgba(80,80,100,0.2) 0%, transparent 100%)',
-            transform: 'scaleY(-1) rotateX(21deg)',
+            transform: 'scaleY(-1) rotateX(45deg)',
             transformOrigin: 'top center',
             opacity: 0.5,
             filter: 'blur(3px)',
