@@ -127,18 +127,20 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             onMouseLeave={() => !isMobile && setExpandedStack(null)}
             onClick={() => isMobile && setExpandedStack(expandedStack === stack.id ? null : stack.id)}
           >
-            {/* Expanded Stack Items - fan out upward */}
+            {/* Expanded Stack Items - fan out upward, tilted to match dock */}
             <div style={{
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: 'translateX(-50%)',
+              // Counter-rotate to match the dock's 45deg tilt
+              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-45deg)',
               transformStyle: 'preserve-3d',
+              transformOrigin: 'center bottom',
               display: 'flex',
               flexDirection: 'column-reverse',
               alignItems: 'center',
-              gap: 6,
-              paddingBottom: 12,
+              gap: 8,
+              paddingBottom: 16,
               opacity: expandedStack === stack.id ? 1 : 0,
               pointerEvents: expandedStack === stack.id ? 'auto' : 'none',
               transition: 'opacity 0.15s ease',
