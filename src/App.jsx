@@ -3,6 +3,7 @@ import BootSequence from './components/BootSequence';
 import SalesLetter from './components/SalesLetter';
 import Window from './components/Window';
 import DockIcon from './components/DockIcon';
+import DockStack from './components/DockStack';
 
 // Import window content components
 import UniversityComparison from './components/windows/UniversityComparison';
@@ -77,6 +78,35 @@ export default function App() {
     { id: 'apply', title: 'Your Application', icon: '🎯', component: <ApplyNow />, position: { x: 180, y: 60 }, width: 440, height: 700 },
   ];
 
+
+    const categories = [
+    {
+      id: 'learn',
+      label: 'Learn',
+      icon: '📚',
+      items: ['whatisapod', 'comparison', 'path']
+    },
+    {
+      id: 'skills',
+      label: 'Skills',
+      icon: '🧠',
+      items: ['aiskills', 'curriculum']
+    },
+    {
+      id: 'results',
+      label: 'Results',
+      icon: '💰',
+      items: ['earnings', 'proof']
+    },
+    {
+      id: 'culture',
+      label: 'Culture',
+      icon: '⚔️',
+      items: ['code', 'team', 'faq']
+    }
+  ];
+
+  const getWindow = (id) => windows.find(w => w.id === id);
 
   // Boot stage
   if (stage === 'boot') {
@@ -268,7 +298,7 @@ export default function App() {
         transform: 'translateX(-50%)',
         display: 'flex',
         alignItems: 'flex-end',
-        gap: 12,
+        gap: 20, // More spacing between categories
         padding: '12px 24px',
         background: 'rgba(10,10,15,0.8)',
         backdropFilter: 'blur(20px)',
@@ -277,13 +307,15 @@ export default function App() {
         zIndex: 10000,
         boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
       }}>
-        {windows.filter(win => win.id !== 'apply').map((win) => (
-          <DockIcon 
-            key={win.id}
-            icon={win.icon} 
-            label={win.title}
-            isActive={openWindows.includes(win.id)}
-            onClick={() => toggleWindow(win.id)}
+        {categories.map((cat) => (
+          <DockStack
+            key={cat.id}
+            id={cat.id}
+            label={cat.label}
+            icon={cat.icon}
+            items={cat.items.map(id => getWindow(id)).filter(Boolean)}
+            openWindows={openWindows}
+            onToggleWindow={toggleWindow}
           />
         ))}
       </div>
