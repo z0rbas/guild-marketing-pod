@@ -57,11 +57,11 @@ export default function App() {
 
   const handleSkipToApplication = () => {
     setStage('os');
-    if (!openWindows.includes('apply')) {
-      setOpenWindows([...openWindows, 'apply']);
-      setWindowOrder([...windowOrder, 'apply']);
+    if (!openWindows.includes('code')) {
+      setOpenWindows([...openWindows, 'code']);
+      setWindowOrder([...windowOrder, 'code']);
     }
-    focusWindow('apply');
+    focusWindow('code');
   };
 
   const windows = [
