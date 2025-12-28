@@ -51,12 +51,12 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 10000,
-      perspective: '1200px',
+      perspective: '1300px',
     }}>
       {/* 3D Dock Container with perspective */}
       <div style={{
         position: 'relative',
-        perspective: isMobile ? 'none' : '1200px',
+        perspective: isMobile ? 'none' : '1300px',
         perspectiveOrigin: 'center bottom',
       }}>
         {/* The dock shelf - 3D angled glass surface */}
@@ -78,7 +78,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
           borderTop: isMobile ? 'none' : '1px solid rgba(255,255,255,0.5)',
           borderBottom: isMobile ? 'none' : '1px solid rgba(40,40,60,0.8)',
           // Subtle 3D tilt - see the top surface (macOS style)
-          transform: isMobile ? 'none' : 'rotateX(16deg)',
+          transform: isMobile ? 'none' : 'rotateX(21deg)',
           transformOrigin: 'center bottom',
           transformStyle: 'preserve-3d',
           boxShadow: isMobile ? '0 -10px 40px rgba(0,0,0,0.3)' : `
@@ -132,7 +132,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
               position: 'absolute',
               bottom: '100%',
               left: '50%',
-              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-16deg)',
+              transform: isMobile ? 'translateX(-50%)' : 'translateX(-50%) rotateX(-21deg)',
               transformStyle: 'preserve-3d',
               display: 'flex',
               flexDirection: 'column-reverse',
@@ -228,7 +228,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 // Counter-rotate to stand upright on the tilted shelf
                 transform: isMobile 
                   ? (expandedStack === stack.id ? 'translateY(-8px)' : 'translateY(0)')
-                  : (expandedStack === stack.id ? 'translateY(-12px)' : 'translateY(0)'),
+                  : (expandedStack === stack.id ? 'rotateX(-18deg) translateY(-10px)' : 'rotateX(-18deg) translateY(0)'),
                 transformStyle: 'preserve-3d',
                 position: 'relative',
               }}
@@ -242,7 +242,7 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'transform 0.25s ease',
-                transform: expandedStack === stack.id ? 'scale(1.08) translateY(-3px)' : 'scale(1)',
+                transform: expandedStack === stack.id ? 'scale(1.08) translateY(-3px) rotateX(-6deg)' : 'scale(1) rotateX(-6deg)',
                 transformStyle: 'preserve-3d',
               }}>
                 {/* Stacked cards behind icon */}
@@ -354,12 +354,12 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
           {/* Surface the dock sits on */}
           <div style={{
             position: 'absolute',
-            bottom: -10,
+            bottom: -14,
             left: '50%',
-            transform: 'translateX(-50%) perspective(900px) rotateX(78deg)',
-            width: '140%',
-            height: 85,
-            background: 'linear-gradient(to bottom, rgba(140,140,155,0.12) 0%, transparent 65%)',
+            transform: 'translateX(-50%) perspective(1100px) rotateX(80deg)',
+            width: '170%',
+            height: 110,
+            background: 'linear-gradient(to bottom, rgba(140,140,155,0.12) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
           {/* Dock reflection on that surface */}
@@ -368,11 +368,11 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
             top: '100%',
             left: 0,
             right: 0,
-            height: 60,
+            height: 70,
             background: 'linear-gradient(to bottom, rgba(80,80,100,0.2) 0%, transparent 100%)',
-            transform: 'scaleY(-1) rotateX(16deg)',
+            transform: 'scaleY(-1) rotateX(21deg)',
             transformOrigin: 'top center',
-            opacity: 0.42,
+            opacity: 0.5,
             filter: 'blur(3px)',
             pointerEvents: 'none',
             borderRadius: '0 0 8px 8px',
