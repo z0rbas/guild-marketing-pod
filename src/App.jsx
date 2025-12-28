@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BootSequence from './components/BootSequence';
 import SalesLetter from './components/SalesLetter';
 import Window from './components/Window';
-import Dock3D from './components/Dock3D';
+import DockIcon from './components/DockIcon';
 
 // Import window content components
 import UniversityComparison from './components/windows/UniversityComparison';
@@ -260,12 +260,33 @@ export default function App() {
         ))}
       </div>
 
-      {/* 3D Dock */}
-      <Dock3D 
-        windows={windows.filter(win => win.id !== 'apply')}
-        openWindows={openWindows}
-        onToggleWindow={toggleWindow}
-      />
+      {/* Dock */}
+      <div style={{
+        position: 'fixed',
+        bottom: 20,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        alignItems: 'flex-end',
+        gap: 12,
+        padding: '12px 24px',
+        background: 'rgba(10,10,15,0.8)',
+        backdropFilter: 'blur(20px)',
+        borderRadius: 24,
+        border: '1px solid rgba(255,255,255,0.1)',
+        zIndex: 10000,
+        boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+      }}>
+        {windows.filter(win => win.id !== 'apply').map((win) => (
+          <DockIcon 
+            key={win.id}
+            icon={win.icon} 
+            label={win.title}
+            isActive={openWindows.includes(win.id)}
+            onClick={() => toggleWindow(win.id)}
+          />
+        ))}
+      </div>
 
       {/* Subtle grid pattern */}
       <div style={{
