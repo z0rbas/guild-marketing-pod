@@ -540,7 +540,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 e.target.style.boxShadow = '0 8px 32px rgba(212,175,55,0.3), 0 0 0 0 rgba(212,175,55,0.4)';
               }}
             >
-              <span style={{ position: 'relative', zIndex: 1 }}>See If You Qualify →</span>
+              <span style={{ position: 'relative', zIndex: 1 }}>Learn More →</span>
             </button>
             
             <p style={{
