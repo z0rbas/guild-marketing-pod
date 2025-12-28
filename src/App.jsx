@@ -257,16 +257,18 @@ export default function App() {
             color: 'rgba(212,175,55,0.08)',
             letterSpacing: 12,
             marginBottom: 8,
+            whiteSpace: 'nowrap',
           }}>
-            GUILD
+            GUILD OF HONOUR
           </div>
           <div style={{
             fontSize: 18,
             color: 'rgba(255,255,255,0.06)',
             letterSpacing: 8,
             textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
           }}>
-            Marketing Pod
+            Youth Entrepreneurship Program
           </div>
         </div>
 
