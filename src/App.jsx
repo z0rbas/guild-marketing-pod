@@ -290,34 +290,56 @@ export default function App() {
         ))}
       </div>
 
-      {/* Dock */}
+      {/* Dock Container */}
       <div style={{
         position: 'fixed',
-        bottom: 20,
+        bottom: 30,
         left: '50%',
         transform: 'translateX(-50%)',
-        display: 'flex',
-        alignItems: 'flex-end',
-        gap: 20, // More spacing between categories
-        padding: '12px 24px',
-        background: 'rgba(10,10,15,0.8)',
-        backdropFilter: 'blur(20px)',
-        borderRadius: 24,
-        border: '1px solid rgba(255,255,255,0.1)',
         zIndex: 10000,
-        boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
       }}>
-        {categories.map((cat) => (
-          <DockStack
-            key={cat.id}
-            id={cat.id}
-            label={cat.label}
-            icon={cat.icon}
-            items={cat.items.map(id => getWindow(id)).filter(Boolean)}
-            openWindows={openWindows}
-            onToggleWindow={toggleWindow}
-          />
-        ))}
+        {/* 3D Tilted Background Platform */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: -20,
+          right: -20,
+          height: 90,
+          background: 'linear-gradient(to bottom, rgba(40,40,50,0.8) 0%, rgba(10,10,15,0.95) 100%)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: 16,
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderTop: '1px solid rgba(255,255,255,0.2)',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+          transform: 'perspective(1000px) rotateX(35deg)',
+          transformOrigin: 'bottom center',
+          zIndex: 0,
+        }} />
+
+        {/* Icons Layer (Flat, sitting "on" the platform) */}
+        <div style={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'flex-end',
+          gap: 20,
+          padding: '12px 24px',
+          zIndex: 1,
+        }}>
+          {categories.map((cat) => (
+            <DockStack
+              key={cat.id}
+              id={cat.id}
+              label={cat.label}
+              icon={cat.icon}
+              items={cat.items.map(id => getWindow(id)).filter(Boolean)}
+              openWindows={openWindows}
+              onToggleWindow={toggleWindow}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Subtle grid pattern */}
