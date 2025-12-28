@@ -230,86 +230,26 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 position: 'relative',
               }}
             >
-              {/* The icon container */}
+              {/* Simple emoji icon */}
               <div style={{
                 position: 'relative',
-                width: isMobile ? 44 : 54,
-                height: isMobile ? 44 : 54,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transition: 'transform 0.25s ease',
-                transform: expandedStack === stack.id ? 'scale(1.1) translateY(-4px)' : 'scale(1)',
+                transition: 'transform 0.2s ease',
+                transform: expandedStack === stack.id ? 'scale(1.15)' : 'scale(1)',
               }}>
-                {/* Stacked cards behind icon */}
-                {!isMobile && stack.items.length > 1 && (
-                  <>
-                    <div style={{
-                      position: 'absolute',
-                      inset: 0,
-                      borderRadius: 10,
-                      background: 'rgba(80,80,90,0.8)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      transform: 'translate(-3px, -3px)',
-                      zIndex: -1,
-                    }} />
-                    {stack.items.length > 2 && (
-                      <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        borderRadius: 10,
-                        background: 'rgba(60,60,70,0.6)',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        transform: 'translate(-6px, -6px)',
-                        zIndex: -2,
-                      }} />
-                    )}
-                  </>
-                )}
-                
-                {/* Main icon background - glossy macOS style */}
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(180deg, rgba(100,100,115,0.95) 0%, rgba(60,60,75,1) 50%, rgba(45,45,60,1) 100%)',
-                  borderRadius: 12,
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderTop: '1px solid rgba(255,255,255,0.35)',
-                  boxShadow: expandedStack === stack.id
-                    ? '0 10px 25px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)'
-                    : '0 5px 15px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.2)',
-                  position: 'relative',
-                  overflow: 'hidden',
+                <span style={{
+                  fontSize: isMobile ? 32 : 42,
                 }}>
-                  {/* Glossy shine overlay */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '50%',
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%)',
-                    borderRadius: '12px 12px 0 0',
-                    pointerEvents: 'none',
-                  }} />
-                  <span style={{
-                    fontSize: isMobile ? 26 : 32,
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))',
-                    position: 'relative',
-                    zIndex: 1,
-                  }}>
-                    {stack.icon}
-                  </span>
-                </div>
+                  {stack.icon}
+                </span>
                 
                 {/* Item count badge */}
                 <div style={{
                   position: 'absolute',
-                  top: -4,
-                  right: -4,
+                  top: -2,
+                  right: -8,
                   minWidth: 18,
                   height: 18,
                   borderRadius: 9,
