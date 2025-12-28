@@ -33,14 +33,27 @@ const ApplyNow = () => {
     setSubmitStatus(null);
 
     try {
-      // For development, use the API endpoint
-      // In production on Vercel, this will be /api/submit-application
+      // Send to our serverless function
       const response = await fetch('/api/submit-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          contact: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            tags: ['pod-application'],
+          },
+          // Pass the full form data so the backend can process custom fields if configured
+          customField: {
+            age: formData.age,
+            experience: formData.experience,
+            goals: formData.goals
+          }
+        }),
       });
 
       const data = await response.json();
