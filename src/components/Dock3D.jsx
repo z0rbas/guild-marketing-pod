@@ -230,14 +230,17 @@ const Dock3D = ({ windows, openWindows, onToggleWindow }) => {
                 position: 'relative',
               }}
             >
-              {/* Simple emoji icon */}
+              {/* Simple emoji icon - tilted up to stand on the shelf */}
               <div style={{
                 position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 transition: 'transform 0.2s ease',
-                transform: expandedStack === stack.id ? 'scale(1.15)' : 'scale(1)',
+                transform: isMobile 
+                  ? (expandedStack === stack.id ? 'scale(1.15)' : 'scale(1)')
+                  : (expandedStack === stack.id ? 'rotateX(-45deg) scale(1.15)' : 'rotateX(-45deg) scale(1)'),
+                transformStyle: 'preserve-3d',
               }}>
                 <span style={{
                   fontSize: isMobile ? 32 : 42,
