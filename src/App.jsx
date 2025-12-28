@@ -20,8 +20,8 @@ import AISkills from './components/windows/AISkills';
 
 export default function App() {
   const [stage, setStage] = useState('boot'); // boot -> letter -> os
-  const [openWindows, setOpenWindows] = useState(['apply']);
-  const [windowOrder, setWindowOrder] = useState(['apply']);
+  const [openWindows, setOpenWindows] = useState(['code']);
+  const [windowOrder, setWindowOrder] = useState(['code']);
   const [time, setTime] = useState(new Date());
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
 
