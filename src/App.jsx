@@ -131,7 +131,7 @@ export default function App() {
       background: `
         radial-gradient(ellipse at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0a0f 0%, #0d0d14 50%, #0a0a0f 100%)
+        linear-gradient(180deg, #050a30 0%, #070e40 50%, #050a30 100%)
       `,
       fontFamily: '"Inter", system-ui, sans-serif',
       overflow: 'hidden',
@@ -144,9 +144,9 @@ export default function App() {
         left: 0,
         right: 0,
         height: 36,
-        background: 'rgba(10,10,15,0.9)',
+        background: 'rgba(5,10,48,0.9)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid #1a1a22',
+        borderBottom: '1px solid #1c2b70',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -310,7 +310,7 @@ export default function App() {
           left: -20,
           right: -20,
           height: 90,
-          background: 'linear-gradient(to bottom, rgba(40,40,50,0.8) 0%, rgba(10,10,15,0.95) 100%)',
+          background: 'linear-gradient(to bottom, rgba(30,40,90,0.8) 0%, rgba(5,10,48,0.95) 100%)',
           backdropFilter: 'blur(20px)',
           borderRadius: 16,
           border: '1px solid rgba(255,255,255,0.1)',

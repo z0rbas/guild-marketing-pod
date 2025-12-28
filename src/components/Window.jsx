@@ -175,7 +175,7 @@ const Window = ({
     width: isMaximized ? '100%' : Math.min(size.width, window.innerWidth - 40),
     height: isMaximized ? 'calc(100vh - 70px)' : Math.min(size.height, window.innerHeight - 100),
     borderRadius: isMaximized ? 0 : 12,
-    border: isMaximized ? 'none' : '1px solid #2a2a35',
+    border: isMaximized ? 'none' : '1px solid #1c2b70',
   };
 
   return (
@@ -184,7 +184,7 @@ const Window = ({
       onClick={() => onFocus(id)}
       style={{
         ...(isMobile ? mobileStyles : desktopStyles),
-        background: 'linear-gradient(180deg, #141419 0%, #0d0d12 100%)',
+        background: 'linear-gradient(180deg, #0a124a 0%, #070e40 100%)',
         boxShadow: isMobile ? 'none' : '0 25px 80px rgba(0,0,0,0.8), 0 0 1px rgba(212,175,55,0.3)',
         zIndex,
         display: 'flex',

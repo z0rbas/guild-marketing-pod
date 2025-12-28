@@ -50,7 +50,7 @@ const DockStack = ({ id, label, icon, items, openWindows, onToggleWindow }) => {
                 alignItems: 'center',
                 gap: 12,
                 padding: '8px 16px',
-                background: 'rgba(20, 20, 25, 0.9)',
+                background: 'rgba(10, 15, 60, 0.9)',
                 backdropFilter: 'blur(10px)',
                 border: `1px solid ${isActive ? 'rgba(212,175,55,0.4)' : 'rgba(255,255,255,0.1)'}`,
                 borderRadius: 12,
@@ -62,11 +62,11 @@ const DockStack = ({ id, label, icon, items, openWindows, onToggleWindow }) => {
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(30, 30, 35, 1)';
+                e.currentTarget.style.background = 'rgba(20, 30, 80, 1)';
                 e.currentTarget.style.transform = 'scale(1.05)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(20, 20, 25, 0.9)';
+                e.currentTarget.style.background = 'rgba(10, 15, 60, 0.9)';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >

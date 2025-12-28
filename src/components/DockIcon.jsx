@@ -92,7 +92,7 @@ const DockIcon = ({ icon, label, isActive, onClick, scale = 1, isNeighborHovered
           left: '50%',
           transform: 'translateX(-50%)',
           padding: '6px 12px',
-          background: 'rgba(20,20,25,0.95)',
+          background: 'rgba(10,15,60,0.95)',
           color: '#d4af37',
           fontSize: 11,
           fontWeight: 600,

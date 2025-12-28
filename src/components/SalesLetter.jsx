@@ -34,7 +34,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
     <div style={{
       position: 'fixed',
       inset: 0,
-      background: '#0a0a0f',
+      background: '#050a30',
       fontFamily: '"Inter", system-ui, sans-serif',
       overflow: 'hidden',
     }}>
