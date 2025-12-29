@@ -14,7 +14,8 @@ const MeetTheGuild = () => {
     {
       name: 'Steph S.',
       fullName: 'Stephan Stavrakis',
-      role: 'Lead Instructor',
+      role: 'Founder & Lead Instructor',
+      image: '/images/founder.jpg',
       emoji: '⚔️',
       shortBio: 'Serial entrepreneur with 15+ years in marketing. Built multiple six-figure businesses.',
       fullBio: 'Serial entrepreneur with 15+ years in marketing and business development. Built multiple six-figure businesses from the ground up. Now focused on training the next generation of honorable entrepreneurs through practical, real-world mentorship.',
@@ -117,19 +118,31 @@ const MeetTheGuild = () => {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-      <div style={{
-          width: 44,
-          height: 44,
-          borderRadius: 10,
-          background: 'rgba(212,175,55,0.1)',
-          border: '1px solid rgba(212,175,55,0.2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: 22,
-        }}>
-          {person.emoji}
-        </div>
+        {person.image ? (
+          <div style={{
+            width: 44,
+            height: 44,
+            borderRadius: 10,
+            overflow: 'hidden',
+            border: '1px solid rgba(212,175,55,0.3)',
+          }}>
+            <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+        ) : (
+          <div style={{
+            width: 44,
+            height: 44,
+            borderRadius: 10,
+            background: 'rgba(212,175,55,0.1)',
+            border: '1px solid rgba(212,175,55,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 22,
+          }}>
+            {person.emoji}
+          </div>
+        )}
         <div>
           <div style={{ fontSize: 14, fontWeight: 600, color: '#e0e0e0' }}>
             {person.name}
@@ -195,19 +208,32 @@ const MeetTheGuild = () => {
           alignItems: 'center',
           gap: 16,
         }}>
-          <div style={{
-            width: 64,
-            height: 64,
-            borderRadius: 14,
-            background: 'rgba(212,175,55,0.15)',
-            border: '2px solid rgba(212,175,55,0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 32,
-          }}>
-            {person.emoji}
-          </div>
+          {person.image ? (
+            <div style={{
+              width: 80,
+              height: 80,
+              borderRadius: 16,
+              overflow: 'hidden',
+              border: '2px solid rgba(212,175,55,0.4)',
+              boxShadow: '0 8px 25px rgba(0,0,0,0.3)',
+            }}>
+              <img src={person.image} alt={person.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          ) : (
+            <div style={{
+              width: 64,
+              height: 64,
+              borderRadius: 14,
+              background: 'rgba(212,175,55,0.15)',
+              border: '2px solid rgba(212,175,55,0.3)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 32,
+            }}>
+              {person.emoji}
+            </div>
+          )}
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 20, fontWeight: 700, color: '#d4af37', marginBottom: 4 }}>
               {person.fullName}

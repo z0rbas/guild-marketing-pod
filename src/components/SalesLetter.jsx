@@ -506,9 +506,29 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 Click below to secure your future. Let’s build something real.
               </p>
               
-              <div style={{ marginTop: 48 }}>
-                <p style={{ fontSize: 28, marginBottom: 4 }}>— Stephan</p>
-                <p style={{ fontSize: 18, color: '#6a6a7a' }}>Founder, Guild of Honour</p>
+              <div style={{ marginTop: 48, display: 'flex', alignItems: 'center', gap: 24 }}>
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  border: '3px solid #fdfaf2',
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1), 0 0 0 1px rgba(212,175,55,0.3)',
+                  overflow: 'hidden',
+                  transform: 'rotate(-3deg)',
+                  flexShrink: 0,
+                  background: '#e0e0e0', // Fallback color
+                }}>
+                  <img 
+                    src="/images/founder.jpg" 
+                    alt="Stephan - Founder" 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={(e) => e.target.style.display = 'none'} // Hide if image doesn't exist yet
+                  />
+                </div>
+                <div>
+                  <p style={{ fontSize: 28, marginBottom: 4, fontFamily: '"Caveat", cursive' }}>— Stephan</p>
+                  <p style={{ fontSize: 16, color: '#6a6a7a', fontWeight: 500, letterSpacing: 1 }}>Founder, Guild of Honour</p>
+                </div>
               </div>
               
               <div style={{ 
