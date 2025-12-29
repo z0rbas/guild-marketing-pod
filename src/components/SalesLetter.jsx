@@ -151,9 +151,9 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 WebkitTextFillColor: 'transparent',
                 textShadow: '0 0 40px rgba(212,175,55,0.3)',
                 letterSpacing: 12,
+                paddingLeft: 12,
                 display: 'block',
                 marginBottom: 12,
-                paddingLeft: 12, // Offset for letter-spacing to keep it centered
               }}>Y.A.P.</span>
               <span style={{ 
                 fontSize: 'clamp(18px, 4vw, 32px)',
@@ -171,15 +171,15 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               color: '#8a8a9a',
               lineHeight: 1.6,
               margin: '0 0 48px 0',
-              maxWidth: 540,
+              maxWidth: 580,
               marginLeft: 'auto',
               marginRight: 'auto',
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.8s ease 0.6s',
             }}>
-              The entrepreneur's alternative to university.<br />
-              Get paid to learn. Build real skills. Own your future.
+              <strong>"Stop paying for a lecture. Get paid for a career."</strong><br />
+              The hyper-modern alternative to the $108,422 university scam. Build a real business in 12 months—starting with $0 debt.
             </p>
             
             <div style={{
@@ -340,7 +340,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.3s both',
               }}>
-                Hey —
+                Hey—
               </p>
               
               <p style={{ 
@@ -348,7 +348,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.5s both',
               }}>
-                You've probably figured out what most 18-year-olds haven't: the game is rigged.
+                I’m going to tell you something your high school counselor is too scared to say:
               </p>
               
               <p style={{ 
@@ -358,7 +358,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 fontWeight: 700,
                 animation: 'inkReveal 0.8s ease-out 0.7s both',
               }}>
-                "Is university really the only path?"
+                University isn’t an education anymore. It’s a $108,422 subscription to a lifestyle you can't afford.
               </p>
               
               <p style={{ 
@@ -366,7 +366,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.9s both',
               }}>
-                You've seen the stats. $35K average debt at graduation — but that's just year one. After 4 years? You're $108K in the hole. Only 42% even finish on time. And 52% of grads end up underemployed anyway.
+                While your friends are "finding themselves" in a lecture hall, the world is moving. 52.6% of grads end up in jobs that don't even require a degree. They spend 4.2 years paying for "soft skills" they could have learned in 4 months of real work.
               </p>
               
               <p style={{ 
@@ -374,7 +374,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1s both',
               }}>
-                I was 19 when I asked myself the same question. I watched my friends take on massive debt for degrees they weren't sure about. I took a different path. It wasn't easy—but it was <span style={{ borderBottom: '2px solid #d4af37' }}>mine</span>.
+                I was 19 when I realized the game was rigged. I watched my friends take on massive debt for degrees they weren't sure about. I chose a different path—the one where <span style={{ borderBottom: '2px solid #d4af37' }}>I got paid to learn</span>.
               </p>
               
               <p style={{ 
@@ -382,7 +382,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.1s both',
               }}>
-                Here's the thing nobody tells you: the degree itself isn't even what you're paying for. You're paying for the <span style={{ borderBottom: '2px solid #d4af37' }}>soft skills</span> — communication, leadership, critical thinking, networking. The stuff that actually matters in business.
+                Here's the secret: The degree isn't what matters. It's the **Result**.
               </p>
               
               <p style={{ 
@@ -390,15 +390,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.3s both',
               }}>
-                But can you really learn leadership from a textbook? Can you learn negotiation by watching a lecture? Can you build a real network in a classroom full of students who have zero experience?
-              </p>
-              
-              <p style={{ 
-                fontSize: 24, 
-                marginBottom: 36, 
-                animation: 'inkReveal 0.8s ease-out 1.5s both',
-              }}>
-                Meanwhile, you watch people online building businesses, making money, living on their own terms — and wonder why nobody told you that was an option.
+                The Y.A.P. is the bridge. It’s a 12-month sprint where you master AI systems, cold outreach, and business growth by actually doing it for real companies.
               </p>
               
               <p style={{ 
@@ -406,21 +398,29 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 36, 
                 color: '#0a0a0f',
                 fontWeight: 700,
+                animation: 'inkReveal 0.8s ease-out 1.5s both',
+              }}>
+                This isn’t just about the money.
+              </p>
+              
+              <p style={{ 
+                fontSize: 24, 
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.7s both',
               }}>
-                Well, I'm telling you now: it is.
+                It’s about the look on your parents' faces when you buy *them* dinner. It's about never having to ask a boss for "permission" to take a vacation. It's about the radical freedom of knowing that as long as you have a laptop, you have an empire.
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 36 }}>
-                The Y.A.P. is what I wish existed when I was 18. It's an apprentice program where you learn real, high-income skills — not by watching videos, but by doing actual client work.
+                By the end of this program, you won't have a piece of paper and a debt collector calling your phone. You'll have income, a portfolio of work, and the skills to be un-firable.
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 36 }}>
-                <span style={{ borderBottom: '2px solid #d4af37' }}>You get paid while you learn.</span> You build a real portfolio. You get mentored by people who've actually done it — not professors who read about it. After 4 years, you could have $168K+ earned instead of $108K owed.
+                <span style={{ borderBottom: '2px solid #d4af37' }}>You earn while you learn.</span> You get mentored by the 212 members of the Guild who are already in the trenches. 
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 36 }}>
-                And by the end? You don't graduate with debt and hope. You graduate with income, skills, and the foundation to build your own sovereign business.
+                This is the path I wish existed when I was 18.
               </p>
 
               <div style={{
@@ -434,77 +434,48 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 lineHeight: 1.7,
               }}>
                 <div style={{ fontWeight: 700, marginBottom: 12, color: '#d4af37', fontSize: 13, letterSpacing: 1 }}>
-                  THIS IS FOR YOU IF:
+                  THE SO WHAT? CHAIN (YOUR FUTURE):
                 </div>
                 <div style={{ marginBottom: 20, fontSize: 14 }}>
-                  <div style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ color: '#50c878' }}>✓</span> You're 17-24 and questioning the university path
+                  <div style={{ marginBottom: 12, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <span style={{ color: '#d4af37', fontWeight: 700 }}>1.</span> 
+                    <div><strong>Skill Mastery:</strong> Learn AI automation and sales (The "How").</div>
                   </div>
-                  <div style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ color: '#50c878' }}>✓</span> You'd rather earn money than owe it
+                  <div style={{ marginBottom: 12, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <span style={{ color: '#d4af37', fontWeight: 700 }}>2.</span> 
+                    <div><strong>Financial:</strong> Get paid from Day 1. No debt. (The "What").</div>
                   </div>
-                  <div style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ color: '#50c878' }}>✓</span> You're willing to put in 20+ hours/week
-                  </div>
-                  <div style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ color: '#50c878' }}>✓</span> You want to own something, not just work for someone
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ color: '#50c878' }}>✓</span> You can handle direct feedback and real pressure
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <span style={{ color: '#d4af37', fontWeight: 700 }}>3.</span> 
+                    <div><strong>Emotional:</strong> Total sovereignty. You control your time, your location, and your worth. (The "Why").</div>
                   </div>
                 </div>
                 
                 <div style={{ height: 1, background: 'rgba(212,175,55,0.2)', marginBottom: 20 }} />
                 
                 <div style={{ fontWeight: 700, marginBottom: 12, color: '#d4af37', fontSize: 13, letterSpacing: 1 }}>
-                  HARD SKILLS (what makes you money):
+                  HARD SKILLS (WHAT CLIENTS PAY FOR):
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 24px', marginBottom: 20 }}>
-                  {['Cold DM & Email', 'Funnel Building', 'Lead Research', 'Appointment Setting', 'Sales & Closing', 'CRM Systems', 'Client Management', 'Business Strategy'].map((skill, i) => (
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '8px 24px', marginBottom: 20 }}>
+                  {['Cold DM & Email Systems', 'AI Workflow Automation', 'High-Ticket Closing', 'CRM Architecture', 'Appointment Setting', 'Lead Research AI', 'Business Strategy', 'Client Management'].map((skill, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <span style={{ color: '#d4af37' }}>→</span> {skill}
                     </div>
                   ))}
-                </div>
-                
-                <div style={{ fontWeight: 700, marginBottom: 12, color: '#d4af37', fontSize: 13, letterSpacing: 1 }}>
-                  SOFT SKILLS (what university charges $108K-$235K for):
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 24px' }}>
-                  {['Communication', 'Leadership', 'Negotiation', 'Critical Thinking', 'Problem Solving', 'Time Management', 'Emotional Intelligence', 'Professional Networking'].map((skill, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ color: '#d4af37' }}>→</span> {skill}
-                    </div>
-                  ))}
-                </div>
-                
-                <div style={{ 
-                  marginTop: 16, 
-                  paddingTop: 16, 
-                  borderTop: '1px solid rgba(212,175,55,0.2)',
-                  fontSize: 13,
-                  color: '#8a8a9a',
-                  fontStyle: 'italic',
-                }}>
-                  The difference? You'll learn these by doing real work with real clients — not by reading case studies in a lecture hall.
                 </div>
               </div>
               
               <p style={{ fontSize: 24, marginBottom: 36 }}>
-                This isn't for everyone. It's for young people who are hungry, coachable, and willing to put in the work. People with honor who want to build something real.
+                If you're hungry, coachable, and tired of being told to "wait your turn"—I want to meet you.
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 36 }}>
-                If that sounds like you — I'd be honored to show you around.
-              </p>
-              
-              <p style={{ fontSize: 24, marginBottom: 36 }}>
-                Click below to explore the Guild OS and see if this path is right for you.
+                Click below to secure your future. Let’s build something real.
               </p>
               
               <div style={{ marginTop: 48 }}>
                 <p style={{ fontSize: 28, marginBottom: 4 }}>— Stephan</p>
-                <p style={{ fontSize: 18, color: '#6a6a7a' }}>Co-Founder, Guild of Honour</p>
+                <p style={{ fontSize: 18, color: '#6a6a7a' }}>Founder, Guild of Honour</p>
               </div>
               
               <div style={{ 
@@ -514,7 +485,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 fontFamily: '"Inter", system-ui',
               }}>
                 <p style={{ fontSize: 14, color: '#4a4a5a', margin: 0, lineHeight: 1.7 }}>
-                  <strong style={{ color: '#1a1a2e' }}>P.S.</strong> — Every day you wait is another day someone else takes your spot. And another $27,000 you could be earning instead of owing.
+                  <strong style={{ color: '#1a1a2e' }}>P.S.</strong> — Every day you wait is another day someone else takes your spot in the Guild. And another $27,422 you could be earning instead of owing.
                 </p>
               </div>
             </div>
