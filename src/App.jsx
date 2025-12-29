@@ -360,31 +360,35 @@ export default function App() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        perspective: '1000px',
+        perspective: '1200px',
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: 0,
       }}>
         <div style={{
           position: 'absolute',
-          top: '50%',
+          top: '40%',
           left: '-50%',
           right: '-50%',
           bottom: '-50%',
           backgroundImage: `
-            linear-gradient(rgba(212,175,55,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(212,175,55,0.05) 1px, transparent 1px)
+            linear-gradient(rgba(212,175,55,0.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(212,175,55,0.12) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px',
-          transform: 'rotateX(60deg)',
+          backgroundSize: '100px 100px',
+          transform: 'rotateX(65deg)',
           transformOrigin: 'top center',
-          animation: 'gridMove3D 30s linear infinite',
-          opacity: 0.2,
+          animation: 'gridFlow 20s linear infinite',
+          opacity: 0.5,
         }} />
       </div>
       
       {/* Global animations */}
       <style>{`
+        @keyframes gridFlow {
+          0% { background-position: 0 0; transform: rotateX(65deg) translateY(0); }
+          100% { background-position: 0 100px; transform: rotateX(65deg) translateY(0); }
+        }
         @keyframes gridMove3D {
           from { background-position: 0 0; }
           to { background-position: 0 80px; }
