@@ -84,18 +84,31 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
             pointerEvents: 'none',
           }} />
           
-          {/* Animated grid */}
+          {/* 3D Perspective Grid */}
           <div style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: `
-              linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 20s linear infinite',
+            perspective: '1000px',
+            overflow: 'hidden',
             pointerEvents: 'none',
-          }} />
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '-50%',
+              right: '-50%',
+              bottom: '-50%',
+              backgroundImage: `
+                linear-gradient(rgba(212,175,55,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212,175,55,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px',
+              transform: 'rotateX(60deg)',
+              transformOrigin: 'top center',
+              animation: 'gridMove3D 30s linear infinite',
+              opacity: 0.3,
+            }} />
+          </div>
           
           <div style={{
             maxWidth: 720,
@@ -121,17 +134,15 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 16,
-              marginBottom: 24,
+              gap: 20,
+              marginBottom: 32,
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
               transition: 'all 0.8s ease 0.3s',
             }}>
-              <span style={{ fontSize: 11, color: '#6a6a7a' }}>200+ members</span>
-              <span style={{ color: '#3a3a4a' }}>•</span>
-              <span style={{ fontSize: 11, color: '#6a6a7a' }}>12 countries</span>
-              <span style={{ color: '#3a3a4a' }}>•</span>
-              <span style={{ fontSize: 11, color: '#6a6a7a' }}>$89K generated this month</span>
+              <div style={{ padding: '6px 14px', background: 'rgba(255,255,255,0.05)', borderRadius: 100, border: '1px solid rgba(255,255,255,0.1)', fontSize: 12, color: '#ffffff', fontWeight: 600 }}>200+ members</div>
+              <div style={{ padding: '6px 14px', background: 'rgba(255,255,255,0.05)', borderRadius: 100, border: '1px solid rgba(255,255,255,0.1)', fontSize: 12, color: '#ffffff', fontWeight: 600 }}>12 countries</div>
+              <div style={{ padding: '6px 14px', background: 'rgba(212,175,55,0.1)', borderRadius: 100, border: '1px solid rgba(212,175,55,0.2)', fontSize: 12, color: '#d4af37', fontWeight: 700 }}>$89K generated this month</div>
             </div>
             
             <h1 style={{
@@ -152,13 +163,15 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 marginBottom: 8,
               }}>Youth Apprentice Program</span>
               <span style={{ 
-                fontSize: 'clamp(24px, 5vw, 36px)',
+                fontSize: 'clamp(32px, 6vw, 48px)',
                 fontFamily: '"Caveat", cursive',
                 color: '#d4af37',
                 display: 'block',
-                opacity: 0.9,
-                marginTop: 8,
+                opacity: 1,
+                marginTop: 12,
                 letterSpacing: 2,
+                transform: 'rotate(-4deg)',
+                textShadow: '2px 2px 0 rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.4)',
               }}>(aka Y.A.P.)</span>
             </h1>
             
@@ -181,51 +194,59 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
             
             <div style={{
               display: 'flex',
-              gap: 12,
+              gap: 16,
               justifyContent: 'center',
               flexWrap: 'wrap',
-              marginBottom: 24,
+              marginBottom: 32,
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.8s ease 0.8s',
             }}>
               <div style={{
-                padding: '12px 20px',
-                background: 'rgba(255,50,50,0.1)',
+                padding: '16px 24px',
+                background: 'rgba(255,50,50,0.05)',
+                backdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255,50,50,0.2)',
-                borderRadius: 8,
+                borderRadius: 12,
                 color: '#ff6b6b',
                 fontSize: 14,
+                fontWeight: 600,
                 animation: 'pulseRed 3s ease-in-out infinite',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
               }}>
-                🎓 University (4 yrs) = -$108K
+                🎓 University (4 yrs) = -$108,422
               </div>
               <div style={{
-                padding: '12px 20px',
-                background: 'rgba(212,175,55,0.1)',
-                border: '1px solid rgba(212,175,55,0.2)',
-                borderRadius: 8,
+                padding: '16px 24px',
+                background: 'rgba(212,175,55,0.05)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(212,175,55,0.3)',
+                borderRadius: 12,
                 color: '#d4af37',
                 fontSize: 14,
+                fontWeight: 700,
                 animation: 'pulseGold 3s ease-in-out infinite',
+                boxShadow: '0 8px 32px rgba(212,175,55,0.1)',
               }}>
-                ⚔️ Y.A.P. (4 yrs) = +$168K
+                ⚔️ Y.A.P. (4 yrs) = +$168,422
               </div>
             </div>
             
             <div style={{
-              padding: '16px 28px',
-              background: 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%)',
+              padding: '24px 40px',
+              background: 'rgba(212,175,55,0.05)',
+              backdropFilter: 'blur(20px)',
               border: '1px solid rgba(212,175,55,0.3)',
-              borderRadius: 10,
+              borderRadius: 16,
               display: 'inline-block',
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.9)',
               transition: 'all 0.8s ease 1s',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.4), inset 0 0 20px rgba(212,175,55,0.1)',
             }}>
-              <div style={{ fontSize: 13, color: '#8a8a9a', marginBottom: 4 }}>4-Year Difference:</div>
-              <div style={{ fontSize: 32, fontWeight: 700, color: '#d4af37', textShadow: '0 0 30px rgba(212,175,55,0.5)' }}>
-                $<AnimatedCounter target={276000} duration={2500} />
+              <div style={{ fontSize: 13, color: '#8a8a9a', marginBottom: 8, letterSpacing: 1, fontWeight: 600 }}>4-YEAR DIFFERENCE:</div>
+              <div style={{ fontSize: 42, fontWeight: 900, color: '#d4af37', textShadow: '0 0 40px rgba(212,175,55,0.6)' }}>
+                $<AnimatedCounter target={276844} duration={2500} />
               </div>
             </div>
           </div>
@@ -626,6 +647,10 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
       </div>
 
       <style>{`
+        @keyframes gridMove3D {
+          from { background-position: 0 0; }
+          to { background-position: 0 80px; }
+        }
         @keyframes bounce {
           0%, 100% { transform: translateX(-50%) translateY(0); }
           50% { transform: translateX(-50%) translateY(8px); }
