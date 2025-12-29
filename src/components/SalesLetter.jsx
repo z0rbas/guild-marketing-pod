@@ -442,42 +442,57 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               </p>
 
               <div style={{
-                background: '#1a1a2e',
-                color: '#faf8f3',
-                padding: 24,
-                borderRadius: 8,
+                background: 'rgba(250, 248, 243, 0.8)',
+                color: '#1a1a2e',
+                padding: '32px',
+                borderRadius: '4px',
                 marginBottom: 28,
                 fontFamily: '"Inter", system-ui',
                 fontSize: 15,
                 lineHeight: 1.7,
+                border: '1px solid rgba(212,175,55,0.3)',
+                boxShadow: 'inset 0 0 40px rgba(212,175,55,0.05), 0 10px 30px rgba(0,0,0,0.05)',
+                position: 'relative',
+                overflow: 'hidden',
               }}>
-                <div style={{ fontWeight: 700, marginBottom: 12, color: '#d4af37', fontSize: 13, letterSpacing: 1 }}>
+                {/* Subtle stamp effect background */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: -20,
+                  right: -20,
+                  fontSize: 120,
+                  opacity: 0.03,
+                  transform: 'rotate(-15deg)',
+                  pointerEvents: 'none',
+                }}>⚔️</div>
+
+                <div style={{ fontWeight: 800, marginBottom: 16, color: '#a88a2a', fontSize: 13, letterSpacing: 2, textTransform: 'uppercase' }}>
                   THE SO WHAT? CHAIN (YOUR FUTURE):
                 </div>
-                <div style={{ marginBottom: 20, fontSize: 14 }}>
-                  <div style={{ marginBottom: 12, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <span style={{ color: '#d4af37', fontWeight: 700 }}>1.</span> 
-                    <div><strong>Skill Mastery:</strong> Learn AI automation and sales (The "How").</div>
+                <div style={{ marginBottom: 24, fontSize: 15 }}>
+                  <div style={{ marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: '#d4af37', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, flexShrink: 0 }}>1</div> 
+                    <div><strong style={{ color: '#0a0a0f' }}>Skill Mastery:</strong> Learn AI automation and sales (The "How").</div>
                   </div>
-                  <div style={{ marginBottom: 12, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <span style={{ color: '#d4af37', fontWeight: 700 }}>2.</span> 
-                    <div><strong>Financial:</strong> Get paid from Day 1. No debt. (The "What").</div>
+                  <div style={{ marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: '#d4af37', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, flexShrink: 0 }}>2</div> 
+                    <div><strong style={{ color: '#0a0a0f' }}>Financial:</strong> Get paid from Day 1. No debt. (The "What").</div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <span style={{ color: '#d4af37', fontWeight: 700 }}>3.</span> 
-                    <div><strong>Emotional:</strong> Total sovereignty. You control your time, your location, and your worth. (The "Why").</div>
+                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: '#d4af37', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, flexShrink: 0 }}>3</div> 
+                    <div><strong style={{ color: '#0a0a0f' }}>Emotional:</strong> Total sovereignty. You control your time, your location, and your worth. (The "Why").</div>
                   </div>
                 </div>
                 
-                <div style={{ height: 1, background: 'rgba(212,175,55,0.2)', marginBottom: 20 }} />
+                <div style={{ height: 1, background: 'rgba(212,175,55,0.2)', marginBottom: 24 }} />
                 
-                <div style={{ fontWeight: 700, marginBottom: 12, color: '#d4af37', fontSize: 13, letterSpacing: 1 }}>
+                <div style={{ fontWeight: 800, marginBottom: 16, color: '#a88a2a', fontSize: 13, letterSpacing: 2, textTransform: 'uppercase' }}>
                   HARD SKILLS (WHAT CLIENTS PAY FOR):
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '8px 24px', marginBottom: 20 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px 24px' }}>
                   {['Cold DM & Email Systems', 'AI Workflow Automation', 'High-Ticket Closing', 'CRM Architecture', 'Appointment Setting', 'Lead Research AI', 'Business Strategy', 'Client Management'].map((skill, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ color: '#d4af37' }}>→</span> {skill}
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 500 }}>
+                      <span style={{ color: '#d4af37', fontSize: 18 }}>•</span> {skill}
                     </div>
                   ))}
                 </div>
@@ -527,106 +542,153 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
             <button
               onClick={onEnterOS}
               style={{
-                padding: isMobile ? '18px 32px' : '20px 48px',
-                fontSize: isMobile ? 15 : 16,
-                fontWeight: 700,
+                padding: isMobile ? '20px 40px' : '24px 64px',
+                fontSize: isMobile ? 16 : 18,
+                fontWeight: 800,
                 textTransform: 'uppercase',
-                letterSpacing: isMobile ? 2 : 3,
-                color: '#0a0a0f',
-                background: 'linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%)',
-                backgroundSize: '200% 200%',
+                letterSpacing: 4,
+                color: '#050a30',
+                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8962e 100%)',
+                backgroundSize: '200% auto',
                 border: 'none',
-                borderRadius: 8,
+                borderRadius: 100,
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                boxShadow: '0 8px 32px rgba(212,175,55,0.3), 0 0 0 0 rgba(212,175,55,0.4)',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                boxShadow: '0 15px 40px rgba(212,175,55,0.4), inset 0 -4px 0 rgba(0,0,0,0.15), 0 0 0 0 rgba(212,175,55,0.4)',
                 animation: 'shimmer 3s infinite, ctaPulse 2s ease-in-out infinite',
                 position: 'relative',
                 overflow: 'hidden',
                 width: isMobile ? '100%' : 'auto',
-                maxWidth: 320,
-                minHeight: 56,
+                minHeight: 64,
                 WebkitTapHighlightColor: 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (!isMobile) {
-                  e.target.style.transform = 'translateY(-4px) scale(1.02)';
-                  e.target.style.boxShadow = '0 16px 48px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.3)';
+                  e.currentTarget.style.transform = 'translateY(-6px) scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 25px 60px rgba(212,175,55,0.6), inset 0 -4px 0 rgba(0,0,0,0.15), 0 0 80px rgba(212,175,55,0.3)';
                 }
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0) scale(1)';
-                e.target.style.boxShadow = '0 8px 32px rgba(212,175,55,0.3), 0 0 0 0 rgba(212,175,55,0.4)';
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 15px 40px rgba(212,175,55,0.4), inset 0 -4px 0 rgba(0,0,0,0.15), 0 0 0 0 rgba(212,175,55,0.4)';
               }}
             >
-              <span style={{ position: 'relative', zIndex: 1 }}>Learn More →</span>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: '-100%',
+                width: '50%',
+                height: '100%',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+                transform: 'skewX(-25deg)',
+                animation: 'sweep 3s infinite',
+              }} />
+              <span style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 12 }}>
+                Secure My Future <span style={{ fontSize: 22 }}>→</span>
+              </span>
             </button>
             
             <p style={{
-              fontSize: 12,
+              fontSize: 13,
               color: '#4a4a5a',
-              marginTop: 16,
+              marginTop: 20,
+              fontWeight: 500,
             }}>
-              Explore the full experience. No commitment.
+              Zero debt. Zero lectures. Just Results.
             </p>
             
             <div style={{
-              marginTop: 24,
-              padding: '12px 20px',
+              marginTop: 48,
+              maxWidth: 500,
+              margin: '48px auto 0',
+              padding: '24px 32px',
               background: 'rgba(255,255,255,0.03)',
-              borderRadius: 8,
-              display: 'inline-block',
+              backdropFilter: 'blur(10px)',
+              borderRadius: 20,
+              border: '1px solid rgba(255,255,255,0.05)',
+              textAlign: 'left',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 20,
+              boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
             }}>
-              <p style={{ fontSize: 13, color: '#8a8a9a', margin: 0, fontStyle: 'italic' }}>
-                "Best decision I ever made. Wish I found this at 18."
-              </p>
-              <p style={{ fontSize: 11, color: '#6a6a7a', margin: '4px 0 0 0' }}>
-                — Marcus T., 19, Pod Member
-              </p>
+              <div style={{
+                width: 56,
+                height: 56,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #d4af37 0%, #a88a2a 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 24,
+                flexShrink: 0,
+                boxShadow: '0 5px 15px rgba(212,175,55,0.3)',
+              }}>MT</div>
+              <div>
+                <p style={{ fontSize: 15, color: '#ffffff', margin: 0, lineHeight: 1.5, fontStyle: 'italic' }}>
+                  "Best decision I ever made. I'm 19 and already earning more than my parents did at 30."
+                </p>
+                <p style={{ fontSize: 12, color: '#d4af37', margin: '8px 0 0 0', fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>
+                  — Marcus T., Pod Member
+                </p>
+              </div>
             </div>
           </div>
           
           {/* Alternative quick apply */}
           <div style={{
             textAlign: 'center',
-            marginTop: 60,
-            padding: '32px',
-            background: 'rgba(212,175,55,0.05)',
-            borderRadius: 12,
+            marginTop: 80,
+            padding: '48px 32px',
+            background: 'linear-gradient(180deg, rgba(212,175,55,0.03) 0%, rgba(5,10,48,0.5) 100%)',
+            borderRadius: 24,
             border: '1px solid rgba(212,175,55,0.1)',
+            position: 'relative',
+            overflow: 'hidden',
           }}>
-            <p style={{ fontSize: 14, color: '#8a8a9a', marginBottom: 16 }}>
-              Already know this is for you?
+            {/* Background pattern */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: 'radial-gradient(circle at 50% 120%, rgba(212,175,55,0.1) 0%, transparent 70%)',
+              pointerEvents: 'none',
+            }} />
+            
+            <p style={{ fontSize: 15, color: '#8a8a9a', marginBottom: 24, fontWeight: 500 }}>
+              Hungry to start?
             </p>
             <button
               onClick={onSkipToApplication}
               style={{
-                padding: isMobile ? '16px 28px' : '14px 32px',
+                padding: '16px 40px',
                 fontSize: 14,
-                fontWeight: 600,
+                fontWeight: 700,
                 color: '#d4af37',
                 background: 'transparent',
-                border: '2px solid #d4af37',
-                borderRadius: 8,
+                border: '2px solid rgba(212,175,55,0.5)',
+                borderRadius: 12,
                 cursor: 'pointer',
-                transition: 'all 0.2s',
+                transition: 'all 0.3s',
+                letterSpacing: 2,
+                textTransform: 'uppercase',
                 width: isMobile ? '100%' : 'auto',
-                maxWidth: 280,
-                minHeight: 50,
+                maxWidth: 300,
                 WebkitTapHighlightColor: 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (!isMobile) {
-                  e.target.style.background = '#d4af37';
-                  e.target.style.color = '#0a0a0f';
+                  e.currentTarget.style.background = 'rgba(212,175,55,0.1)';
+                  e.currentTarget.style.borderColor = '#d4af37';
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(212,175,55,0.2)';
                 }
               }}
               onMouseLeave={(e) => {
-                e.target.style.background = 'transparent';
-                e.target.style.color = '#d4af37';
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.borderColor = 'rgba(212,175,55,0.5)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Skip to Application →
+              Go straight to Application
             </button>
           </div>
         </div>
@@ -650,6 +712,11 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
         @keyframes gridMove3D {
           from { background-position: 0 0; }
           to { background-position: 0 80px; }
+        }
+        @keyframes sweep {
+          0% { left: -100%; }
+          50% { left: 150%; }
+          100% { left: 150%; }
         }
         @keyframes bounce {
           0%, 100% { transform: translateX(-50%) translateY(0); }
