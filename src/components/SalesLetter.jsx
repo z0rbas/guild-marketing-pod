@@ -135,10 +135,10 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
             </div>
             
             <h1 style={{
-              fontSize: 'clamp(48px, 10vw, 84px)',
+              fontSize: 'clamp(32px, 8vw, 64px)',
               fontWeight: 900,
               color: '#ffffff',
-              lineHeight: 1,
+              lineHeight: 1.1,
               margin: '0 0 32px 0',
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -150,20 +150,25 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 textShadow: '0 0 40px rgba(212,175,55,0.3)',
-                letterSpacing: 12,
-                paddingLeft: 12,
+                letterSpacing: 2,
                 display: 'block',
-                marginBottom: 12,
-              }}>Y.A.P.</span>
-              <span style={{ 
-                fontSize: 'clamp(18px, 4vw, 32px)',
-                fontWeight: 500,
-                color: '#ffffff',
-                letterSpacing: 1,
-                display: 'block',
+                marginBottom: 8,
                 textTransform: 'uppercase',
+              }}>
+                Youth Apprentice Program
+              </span>
+              <span style={{ 
+                fontSize: 'clamp(24px, 5vw, 42px)',
+                fontWeight: 400,
+                color: '#d4af37',
+                fontFamily: '"Caveat", cursive',
+                display: 'block',
                 opacity: 0.9,
-              }}>Youth Apprentice Program</span>
+                transform: 'rotate(-2deg)',
+                marginTop: -5,
+              }}>
+                (aka Y.A.P.)
+              </span>
             </h1>
             
             <p style={{
