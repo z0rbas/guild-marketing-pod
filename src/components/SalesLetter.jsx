@@ -519,7 +519,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                   background: '#e0e0e0', // Fallback color
                 }}>
                   <img 
-                    src="/images/founder.jpg" 
+                    src="/images/founder.png" 
                     alt="Stephan - Founder" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => e.target.style.display = 'none'} // Hide if image doesn't exist yet

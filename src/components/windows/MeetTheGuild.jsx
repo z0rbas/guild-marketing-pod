@@ -15,7 +15,7 @@ const MeetTheGuild = () => {
       name: 'Steph S.',
       fullName: 'Stephan Stavrakis',
       role: 'Founder & Lead Instructor',
-      image: '/images/founder.jpg',
+      image: '/images/founder.png',
       emoji: '⚔️',
       shortBio: 'Serial entrepreneur with 15+ years in marketing. Built multiple six-figure businesses.',
       fullBio: 'Serial entrepreneur with 15+ years in marketing and business development. Built multiple six-figure businesses from the ground up. Now focused on training the next generation of honorable entrepreneurs through practical, real-world mentorship.',
