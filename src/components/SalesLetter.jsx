@@ -145,20 +145,11 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.8s ease 0.4s',
             }}>
-              The Marketing<br />
               <span style={{ 
                 color: '#d4af37',
                 textShadow: '0 0 40px rgba(212,175,55,0.4)',
-              }}>Pod</span>
-              <div style={{
-                fontSize: 'clamp(14px, 2vw, 18px)',
-                color: '#6a6a7a',
-                fontWeight: 400,
-                letterSpacing: 0,
-                marginTop: 8,
-              }}>
-                12 Months to Financial Freedom
-              </div>
+              }}>Y.A.P.</span><br />
+              Youth Apprenticeship Program
             </h1>
             
             <p style={{
@@ -207,7 +198,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 fontSize: 14,
                 animation: 'pulseGold 3s ease-in-out infinite',
               }}>
-                ⚔️ Marketing Pod (4 yrs) = +$168K
+                ⚔️ Y.A.P. (4 yrs) = +$168K
               </div>
             </div>
             
@@ -382,7 +373,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
-                The Marketing Pod is what I wish existed when I was 18. It's an apprenticeship where you learn real, high-income skills — not by watching videos, but by doing actual client work.
+                The Y.A.P. is what I wish existed when I was 18. It's an apprenticeship where you learn real, high-income skills — not by watching videos, but by doing actual client work.
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>

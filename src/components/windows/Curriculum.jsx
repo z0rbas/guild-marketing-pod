@@ -175,7 +175,7 @@ const Curriculum = () => {
             Official Curriculum
           </h2>
           <p style={{ color: '#6a6a7a', fontSize: 12, margin: 0 }}>
-            Guild of Honour Marketing Pod — Course Catalog 2025-26
+            Guild of Honour Y.A.P. — Course Catalog 2025-26
           </p>
         </div>
         <div style={{

@@ -275,7 +275,7 @@ export default function App() {
             textTransform: 'uppercase',
             whiteSpace: 'nowrap',
           }}>
-            Youth Entrepreneurship Program
+            Youth Apprenticeship Program
           </div>
         </div>
 
