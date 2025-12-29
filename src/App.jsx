@@ -257,23 +257,29 @@ export default function App() {
           textAlign: 'center',
           zIndex: 0,
           pointerEvents: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
           <div style={{
-            fontSize: 64,
-            fontWeight: 700,
-            color: 'rgba(212,175,55,0.08)',
-            letterSpacing: 12,
-            marginBottom: 8,
+            fontSize: isMobile ? 40 : 120,
+            fontWeight: 900,
+            color: 'rgba(212,175,55,0.03)',
+            letterSpacing: isMobile ? 8 : 24,
+            marginBottom: isMobile ? 4 : 8,
             whiteSpace: 'nowrap',
+            lineHeight: 1,
           }}>
             GUILD OF HONOUR
           </div>
           <div style={{
-            fontSize: 18,
-            color: 'rgba(255,255,255,0.06)',
-            letterSpacing: 8,
+            fontSize: isMobile ? 10 : 20,
+            color: 'rgba(255,255,255,0.02)',
+            letterSpacing: isMobile ? 4 : 16,
             textTransform: 'uppercase',
             whiteSpace: 'nowrap',
+            fontWeight: 500,
           }}>
             Youth Apprentice Program
           </div>
