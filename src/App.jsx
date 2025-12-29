@@ -17,11 +17,12 @@ import WhatIsAPod from './components/windows/WhatIsAPod';
 import FAQ from './components/windows/FAQ';
 import ApplyNow from './components/windows/ApplyNow';
 import AISkills from './components/windows/AISkills';
+import CommandCenter from './components/windows/CommandCenter';
 
 export default function App() {
   const [stage, setStage] = useState('boot'); // boot -> letter -> os
-  const [openWindows, setOpenWindows] = useState(['code']);
-  const [windowOrder, setWindowOrder] = useState(['code']);
+  const [openWindows, setOpenWindows] = useState(['command', 'code']);
+  const [windowOrder, setWindowOrder] = useState(['code', 'command']);
   const [time, setTime] = useState(new Date());
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
 
@@ -57,14 +58,21 @@ export default function App() {
 
   const handleSkipToApplication = () => {
     setStage('os');
-    if (!openWindows.includes('code')) {
-      setOpenWindows([...openWindows, 'code']);
-      setWindowOrder([...windowOrder, 'code']);
-    }
-    focusWindow('code');
+    const defaults = ['command', 'code'];
+    const newWindows = [...new Set([...openWindows, ...defaults])];
+    setOpenWindows(newWindows);
+    setWindowOrder([...windowOrder.filter(w => !defaults.includes(w)), ...defaults]);
+    focusWindow('command');
   };
 
   const windows = [
+    { id: 'command', title: 'Command Center', icon: '📡', component: <CommandCenter onStartTask={(id) => {
+      if (!openWindows.includes(id)) {
+        setOpenWindows(prev => [...prev, id]);
+        setWindowOrder(prev => [...prev, id]);
+      }
+      focusWindow(id);
+    }} />, position: { x: 50, y: 50 }, width: 440, height: 580 },
     { id: 'whatisapod', title: 'What is a POD?', icon: '🛡️', component: <WhatIsAPod />, position: { x: 60, y: 40 }, width: 520, height: 680 },
     { id: 'comparison', title: 'University vs Pod', icon: '🎓', component: <UniversityComparison />, position: { x: 40, y: 50 }, width: 520, height: 720 },
     { id: 'path', title: 'The Path', icon: '🗺️', component: <ThePath />, position: { x: 100, y: 70 }, width: 480, height: 620 },
@@ -80,6 +88,12 @@ export default function App() {
 
 
     const categories = [
+    {
+      id: 'system',
+      label: 'System',
+      icon: '⚡',
+      items: ['command']
+    },
     {
       id: 'learn',
       label: 'Learn',
