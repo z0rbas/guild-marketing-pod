@@ -281,11 +281,11 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               repeating-linear-gradient(transparent, transparent 35px, #e8e8e8 35px, #e8e8e8 36px)
             `,
             backgroundSize: '100% 100%, 100% 36px',
-            backgroundColor: '#faf8f3',
+            backgroundColor: '#fdfaf2',
             borderRadius: 2,
             padding: 'clamp(32px, 8vw, 64px)',
             paddingTop: '80px',
-            boxShadow: '0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1)',
+            boxShadow: '0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.1)',
             position: 'relative',
             transform: 'rotate(-0.5deg)',
             animation: 'paperSlide 1s ease-out',
@@ -312,7 +312,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               left: 0,
               right: 0,
               height: 4,
-              background: '#faf8f3',
+              background: '#fdfaf2',
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
               zIndex: 1,
             }} />
@@ -442,7 +442,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               </p>
 
               <div style={{
-                background: 'rgba(250, 248, 243, 0.8)',
+                background: 'rgba(253, 250, 242, 0.95)',
                 color: '#1a1a2e',
                 padding: '32px',
                 borderRadius: '4px',
@@ -451,7 +451,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 fontSize: 15,
                 lineHeight: 1.7,
                 border: '1px solid rgba(212,175,55,0.3)',
-                boxShadow: 'inset 0 0 40px rgba(212,175,55,0.05), 0 10px 30px rgba(0,0,0,0.05)',
+                boxShadow: 'inset 0 0 40px rgba(212,175,55,0.1), 0 10px 30px rgba(0,0,0,0.05)',
                 position: 'relative',
                 overflow: 'hidden',
               }}>
