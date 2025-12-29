@@ -263,25 +263,24 @@ export default function App() {
           justifyContent: 'center',
         }}>
           <div style={{
-            fontSize: isMobile ? 40 : 120,
+            fontSize: isMobile ? 32 : 100,
             fontWeight: 900,
-            color: 'rgba(212,175,55,0.03)',
-            letterSpacing: isMobile ? 8 : 24,
+            color: 'rgba(255,255,255,0.03)',
             marginBottom: isMobile ? 4 : 8,
             whiteSpace: 'nowrap',
-            lineHeight: 1,
+            lineHeight: 1.1,
           }}>
-            GUILD OF HONOUR
+            Youth Apprentice<br />Program
           </div>
           <div style={{
-            fontSize: isMobile ? 10 : 20,
-            color: 'rgba(255,255,255,0.02)',
-            letterSpacing: isMobile ? 4 : 16,
-            textTransform: 'uppercase',
+            fontSize: isMobile ? 18 : 48,
+            fontFamily: '"Caveat", cursive',
+            color: 'rgba(212,175,55,0.03)',
             whiteSpace: 'nowrap',
-            fontWeight: 500,
+            marginTop: isMobile ? 0 : 8,
+            transform: 'rotate(-4deg)',
           }}>
-            Youth Apprentice Program
+            (aka Y.A.P.)
           </div>
         </div>
 
