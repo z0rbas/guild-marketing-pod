@@ -490,7 +490,7 @@ const UniversityComparison = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 14, height: 14, background: 'linear-gradient(180deg, #f4d03f 0%, #d4af37 100%)', borderRadius: 3 }} />
-              <span style={{ fontSize: 11, color: '#8a8a9a' }}>Marketing Pod (Earnings)</span>
+              <span style={{ fontSize: 11, color: '#8a8a9a' }}>Y.A.P. (Earnings)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 14, height: 2, background: '#6a6a7a', borderRadius: 1 }} />

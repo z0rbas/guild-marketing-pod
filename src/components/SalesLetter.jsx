@@ -135,21 +135,35 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
             </div>
             
             <h1 style={{
-              fontSize: 'clamp(42px, 9vw, 72px)',
-              fontWeight: 700,
+              fontSize: 'clamp(48px, 10vw, 84px)',
+              fontWeight: 900,
               color: '#ffffff',
-              lineHeight: 1.1,
-              margin: '0 0 24px 0',
-              letterSpacing: -2,
+              lineHeight: 1,
+              margin: '0 0 32px 0',
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.8s ease 0.4s',
+              textAlign: 'center',
             }}>
               <span style={{ 
-                color: '#d4af37',
-                textShadow: '0 0 40px rgba(212,175,55,0.4)',
-              }}>Y.A.P.</span><br />
-              Youth Apprenticeship Program
+                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8962e 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 40px rgba(212,175,55,0.3)',
+                letterSpacing: 12,
+                display: 'block',
+                marginBottom: 12,
+                paddingLeft: 12, // Offset for letter-spacing to keep it centered
+              }}>Y.A.P.</span>
+              <span style={{ 
+                fontSize: 'clamp(18px, 4vw, 32px)',
+                fontWeight: 500,
+                color: '#ffffff',
+                letterSpacing: 1,
+                display: 'block',
+                textTransform: 'uppercase',
+                opacity: 0.9,
+              }}>Youth Apprenticeship Program</span>
             </h1>
             
             <p style={{
