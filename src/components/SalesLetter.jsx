@@ -138,7 +138,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               fontSize: 'clamp(40px, 8vw, 72px)',
               fontWeight: 900,
               color: '#ffffff',
-              lineHeight: 1.1,
+              lineHeight: 1.2,
               margin: '0 0 32px 0',
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -159,14 +159,14 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 color: '#d4af37',
                 display: 'block',
                 opacity: 0.9,
-                marginTop: -8,
+                marginTop: 8,
                 letterSpacing: 2,
               }}>(aka Y.A.P.)</span>
             </h1>
             
             <p style={{
               fontSize: 'clamp(18px, 3vw, 24px)',
-              color: '#8a8a9a',
+              color: '#ffffff',
               lineHeight: 1.6,
               margin: '0 0 48px 0',
               maxWidth: 580,
@@ -175,9 +175,10 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               opacity: heroVisible ? 1 : 0,
               transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.8s ease 0.6s',
+              textShadow: '0 2px 10px rgba(0,0,0,0.3)',
             }}>
-              <strong>"Stop paying for a lecture. Get paid for a career."</strong><br />
-              The hyper-modern alternative to the $108,422 university scam. Build a real business in 12 months—starting with $0 debt.
+              <strong style={{ color: '#ffffff' }}>"Stop paying for a lecture. Get paid for a career."</strong><br />
+              <span style={{ color: '#8a8a9a' }}>The hyper-modern alternative to the $108,422 university scam. Build a real business in 12 months—starting with $0 debt.</span>
             </p>
             
             <div style={{
