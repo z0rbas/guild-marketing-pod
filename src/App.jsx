@@ -158,11 +158,18 @@ export default function App() {
           alignItems: 'center',
           gap: 12,
         }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-          }}>
+          <a 
+            href="https://www.guildofhonour.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              textDecoration: 'none',
+              cursor: 'pointer',
+            }}
+          >
             <span style={{ color: '#d4af37', fontSize: 14 }}>⚔️</span>
             <span style={{
               color: '#d4af37',
@@ -172,7 +179,7 @@ export default function App() {
             }}>
               GUILD OF HONOUR
             </span>
-          </div>
+          </a>
           <button
             onClick={() => toggleWindow('apply')}
             style={{
