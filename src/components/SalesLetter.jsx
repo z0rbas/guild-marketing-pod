@@ -163,7 +163,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 display: 'block',
                 textTransform: 'uppercase',
                 opacity: 0.9,
-              }}>Youth Apprenticeship Program</span>
+              }}>Youth Apprentice Program</span>
             </h1>
             
             <p style={{
@@ -387,7 +387,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
-                The Y.A.P. is what I wish existed when I was 18. It's an apprenticeship where you learn real, high-income skills — not by watching videos, but by doing actual client work.
+                The Y.A.P. is what I wish existed when I was 18. It's an apprentice program where you learn real, high-income skills — not by watching videos, but by doing actual client work.
               </p>
               
               <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
