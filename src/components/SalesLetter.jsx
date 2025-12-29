@@ -258,14 +258,46 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
         }}>
           {/* Paper effect container */}
           <div style={{
-            background: 'linear-gradient(180deg, #faf8f3 0%, #f5f2eb 100%)',
-            borderRadius: 4,
+            background: `
+              linear-gradient(90deg, transparent 79px, rgba(212,175,55,0.1) 79px, rgba(212,175,55,0.1) 81px, transparent 81px),
+              repeating-linear-gradient(transparent, transparent 35px, #e8e8e8 35px, #e8e8e8 36px)
+            `,
+            backgroundSize: '100% 100%, 100% 36px',
+            backgroundColor: '#faf8f3',
+            borderRadius: 2,
             padding: 'clamp(32px, 8vw, 64px)',
+            paddingTop: '80px',
             boxShadow: '0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1)',
             position: 'relative',
             transform: 'rotate(-0.5deg)',
             animation: 'paperSlide 1s ease-out',
           }}>
+            {/* Perforated edge at top */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 16,
+              background: 'radial-gradient(circle, #050a30 6px, transparent 7px)',
+              backgroundSize: '20px 20px',
+              backgroundPosition: 'center -10px',
+              backgroundRepeat: 'repeat-x',
+              opacity: 1,
+              zIndex: 2,
+            }} />
+            
+            {/* Torn edge effect at top */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 4,
+              background: '#faf8f3',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+              zIndex: 1,
+            }} />
             {/* Paper texture overlay */}
             <div style={{
               position: 'absolute',
@@ -300,11 +332,11 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               fontFamily: '"Caveat", cursive',
               color: '#1a1a2e',
               position: 'relative',
+              lineHeight: '36px',
             }}>
               <p style={{ 
                 fontSize: 28, 
-                marginBottom: 32, 
-                lineHeight: 1.5,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.3s both',
               }}>
                 Hey —
@@ -312,8 +344,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.5s both',
               }}>
                 You've probably figured out what most 18-year-olds haven't: the game is rigged.
@@ -321,8 +352,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 32, 
-                marginBottom: 28, 
-                lineHeight: 1.4,
+                marginBottom: 36, 
                 color: '#0a0a0f',
                 fontWeight: 700,
                 animation: 'inkReveal 0.8s ease-out 0.7s both',
@@ -332,8 +362,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 0.9s both',
               }}>
                 You've seen the stats. $35K average debt at graduation — but that's just year one. After 4 years? You're $108K in the hole. Only 42% even finish on time. And 52% of grads end up underemployed anyway.
@@ -341,8 +370,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1s both',
               }}>
                 I was 19 when I asked myself the same question. I watched my friends take on massive debt for degrees they weren't sure about. I took a different path. It wasn't easy—but it was <span style={{ borderBottom: '2px solid #d4af37' }}>mine</span>.
@@ -350,8 +378,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.1s both',
               }}>
                 Here's the thing nobody tells you: the degree itself isn't even what you're paying for. You're paying for the <span style={{ borderBottom: '2px solid #d4af37' }}>soft skills</span> — communication, leadership, critical thinking, networking. The stuff that actually matters in business.
@@ -359,8 +386,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.3s both',
               }}>
                 But can you really learn leadership from a textbook? Can you learn negotiation by watching a lecture? Can you build a real network in a classroom full of students who have zero experience?
@@ -368,8 +394,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 24, 
-                marginBottom: 28, 
-                lineHeight: 1.6,
+                marginBottom: 36, 
                 animation: 'inkReveal 0.8s ease-out 1.5s both',
               }}>
                 Meanwhile, you watch people online building businesses, making money, living on their own terms — and wonder why nobody told you that was an option.
@@ -377,8 +402,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               
               <p style={{ 
                 fontSize: 28, 
-                marginBottom: 28, 
-                lineHeight: 1.5,
+                marginBottom: 36, 
                 color: '#0a0a0f',
                 fontWeight: 700,
                 animation: 'inkReveal 0.8s ease-out 1.7s both',
@@ -386,15 +410,15 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 Well, I'm telling you now: it is.
               </p>
               
-              <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 The Y.A.P. is what I wish existed when I was 18. It's an apprentice program where you learn real, high-income skills — not by watching videos, but by doing actual client work.
               </p>
               
-              <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 <span style={{ borderBottom: '2px solid #d4af37' }}>You get paid while you learn.</span> You build a real portfolio. You get mentored by people who've actually done it — not professors who read about it. After 4 years, you could have $168K+ earned instead of $108K owed.
               </p>
               
-              <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 And by the end? You don't graduate with debt and hope. You graduate with income, skills, and the foundation to build your own sovereign business.
               </p>
 
@@ -465,15 +489,15 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
                 </div>
               </div>
               
-              <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 This isn't for everyone. It's for young people who are hungry, coachable, and willing to put in the work. People with honor who want to build something real.
               </p>
               
-              <p style={{ fontSize: 24, marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 If that sounds like you — I'd be honored to show you around.
               </p>
               
-              <p style={{ fontSize: 24, marginBottom: 8, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 24, marginBottom: 36 }}>
                 Click below to explore the Guild OS and see if this path is right for you.
               </p>
               
