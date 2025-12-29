@@ -146,10 +146,8 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               textAlign: 'center',
             }}>
               <span style={{ 
-                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8962e 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 0 40px rgba(212,175,55,0.3)',
+                color: '#ffffff',
+                textShadow: '0 2px 20px rgba(255,255,255,0.1)',
                 display: 'block',
                 marginBottom: 8,
               }}>Youth Apprentice Program</span>
