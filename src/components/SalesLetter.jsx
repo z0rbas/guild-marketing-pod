@@ -323,6 +323,7 @@ const SalesLetter = ({ onEnterOS, onSkipToApplication }) => {
               justifyContent: 'center',
               fontSize: 24,
               animation: 'sealDrop 0.6s ease-out 0.5s both',
+              zIndex: 10,
             }}>
               ⚔️
             </div>
